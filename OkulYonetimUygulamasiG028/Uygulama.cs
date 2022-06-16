@@ -12,14 +12,17 @@ namespace OkulYonetimUygulamasiG028
 
         public void Calistir()
         {
+            //Sahte Veri
             SahteVeriGir();
-            Menu();
             //Menüyazdır
+            Menu();
             //SwitchCase
+            SecimAl();
 
         }
         public void Menu()
         {
+            Console.WriteLine();
             Console.WriteLine("------  Okul Yönetim Uygulamasi  -----");
             Console.WriteLine();
             Console.WriteLine("1-Bütün öğrencileri listele");
@@ -42,9 +45,91 @@ namespace OkulYonetimUygulamasiG028
             Console.WriteLine("18-Öğrencinin adresini gir"); //  (Öğrencinin adresi farklı bir class olacak )
             Console.WriteLine("19-Öğrencinin okuduğu kitabı gir");
             Console.WriteLine("20-Öğrencinin notunu gir"); // (Metot ile giriş yapılacak)
+            Console.WriteLine();
             Console.WriteLine("Çıkış yapmak için “çıkış” yazıp “enter”a basın.");
+            Console.WriteLine();
           
             
+        }
+
+        public void SecimAl()
+        {
+            while (true)
+            {
+                Console.Write("Yapmak istediğiniz işlemi seçiniz: ");
+                string secim = Console.ReadLine();             
+
+                switch (secim)
+                {
+                    case "1":
+                        Console.WriteLine("Bütün öğrencileri Listele");
+                        break;
+                    case "2":
+                        Console.WriteLine("Şubeye göre öğrencileri listele");
+                        break;
+                    case "3":
+                        Console.WriteLine("Cinsiyetine göre öğrencileri listele");
+                        break;
+                    case "4":
+                        Console.WriteLine("Şu tarihten sonra doğan öğrencileri listele");
+                        break;
+                    case "5":
+                        Console.WriteLine("İllere göre sıralayarak öğrencileri listele");
+                        break;
+                    case "6":
+                        Console.WriteLine("Öğrencinin tüm notlarını listele");
+                        break;
+                    case "7":
+                        Console.WriteLine("Öğrencinin okuduğu kitapları listele");
+                        break;
+                    case "8":
+                        Console.WriteLine("Okuldaki en yüksek notlu 5 öğrenciyi listele");
+                        break;
+                    case "9":
+                        Console.WriteLine("Okuldaki en düşük notlu 3 öğrenciyi listele");
+                        break;
+                    case "10":
+                        Console.WriteLine("Şubedeki en yüksek notlu 5 öğrenciyi listele");
+                        break;
+                    case "11":
+                        Console.WriteLine("Şubedeki en düşük notlu 3 öğrenciyi listele");
+                        break;
+                    case "12":
+                        Console.WriteLine("Öğrencinin not ortalamasını gör");
+                        break;
+                    case "13":
+                        Console.WriteLine("Şubenin not ortalamasını gör");
+                        break;
+                    case "14":
+                        Console.WriteLine("Öğrencinin okuduğu son kitabı gör");
+                        break;
+                    case "15":
+                        Console.WriteLine("Öğrenci ekle");
+                        break;
+                    case "16":
+                        Console.WriteLine("Öğrenci güncelle");
+                        break;
+                    case "17":
+                        Console.WriteLine("Öğrenci sil");
+                        break;
+                    case "18":
+                        Console.WriteLine("Öğrencinin adresini gir");
+                        break;
+                    case "19":
+                        Console.WriteLine("Öğrencinin okuduğu kitabı gir");
+                        break;
+                    case "20":
+                        Console.WriteLine("Öğrencinin notunu gir");
+                        break;
+                    case "çikis":
+                        Console.WriteLine("Uygulamadan çıktınız...");
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Yanlış seçim yaptınız...");
+                        break;
+                }
+            }
         }
         public void NotGir()
         {
