@@ -62,10 +62,10 @@ namespace OkulYonetimUygulamasiG028
                 switch (secim)
                 {
                     case "1":
-                        Okul.OgrenciListesiGetir("1");
+                        Okul.OgrenciListesiGetir("1"); //enes
                         break;
                     case "2":
-                        Okul.OgrenciListesiGetir("2");
+                        Okul.OgrenciListesiGetir("2"); 
                         break;
                     case "3":
                         Console.WriteLine("Cinsiyetine göre öğrencileri listele");
