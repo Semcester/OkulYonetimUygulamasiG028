@@ -62,10 +62,10 @@ namespace OkulYonetimUygulamasiG028
                 switch (secim)
                 {
                     case "1":
-                        Okul.ButunOgrencileriListele();
+                        Okul.OgrenciListesiGetir("1");
                         break;
                     case "2":
-                        Console.WriteLine("Şubeye göre öğrencileri listele");
+                        Okul.OgrenciListesiGetir("2");
                         break;
                     case "3":
                         Console.WriteLine("Cinsiyetine göre öğrencileri listele");
@@ -121,12 +121,12 @@ namespace OkulYonetimUygulamasiG028
                     case "20":
                         Console.WriteLine("Öğrencinin notunu gir");
                         break;
-                    case "çikis":
+                    case "çıkış":
                         Console.WriteLine("Uygulamadan çıktınız...");
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Yanlış seçim yaptınız...");
+                        Console.WriteLine("Böyle bir seçim yok tekrar deneyin.");
                         break;
                 }
             }

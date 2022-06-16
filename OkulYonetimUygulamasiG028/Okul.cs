@@ -15,13 +15,15 @@ namespace OkulYonetimUygulamasiG028
         {
             //Bütün kontroller yapılmış olmalı...
 
+
             Ogrenci o = new Ogrenci();
             o.No = no;
             o.Ad = ad;
             o.Soyad = soyad;
-            //
-            //
-            //
+            o.DogumTarihi = dogumtarihi;
+            o.Cinsiyet = cinsiyet;
+            o.Sube = sube;
+              
             this.Ogrenciler.Add(o);
         }
 
@@ -47,16 +49,81 @@ namespace OkulYonetimUygulamasiG028
 
         }
 
-        public void ButunOgrencileriListele() //Semih Senan 16.06.2022
+        //public void ButunOgrencileriListele() //Semih Senan 16.06.2022
+        //{
+        //    Console.WriteLine();
+        //    Console.WriteLine("1-Bütün Öğrencileri Listele --------------------------------------------------");
+        //    Console.WriteLine();
+        //    Console.WriteLine("Şube".PadRight(10) + "No".PadRight(5) + "Adı Soyadı".PadRight(20) + "Not Ort.".PadRight(10) + "Okuduğu Kitap Say.");
+        //    Console.WriteLine("",41,"-");
+
+        //}
+
+
+
+        public List<Ogrenci> OgrenciListesiGetir(string a) //16.06.2020 15:30:00 Mert Anıl Deke , Enes Kırış
         {
-            Console.WriteLine();
-            Console.WriteLine("1-Bütün Öğrencileri Listele --------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(5) + "Adı Soyadı".PadRight(20) + "Not Ort.".PadRight(10) + "Okuduğu Kitap Say.");
-            Console.WriteLine("",41,"-");
+            // parametreden aldığımız durum veri tipinde aldığımız veri ile otogaleride araç durumlarına göre listeleme gerçekleştiriyoruz.
+            List<Ogrenci> liste = this.Ogrenciler;
+            if (a == "1")
+            {
+                OgrenciListele(liste);
+            }
+            else if (a == "2")
+            {
+                Console.WriteLine("2-Şubeye Göre Öğrencileri Listele" + "".PadRight(15,'-'));
+                Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+
+                string sube = Console.ReadLine().ToUpper();
+
+                if (sube == "A")
+                {
+                    liste = this.Ogrenciler.Where(a=> a.Sube == Ogrenci.SUBE.A).ToList();
+
+                    OgrenciListele(liste);
+                        
+                }
+                else if (sube == "B")
+                {
+                    liste = this.Ogrenciler.Where(a=> a.Sube == Ogrenci.SUBE.B).ToList();
+
+                    OgrenciListele(liste);
+                }
+                else if (sube == "C")
+                {
+                    liste = this.Ogrenciler.Where(a=> a.Sube == Ogrenci.SUBE.C).ToList();
+
+                    OgrenciListele(liste);
+                }
+
+            }
+
+            return liste;
 
         }
 
+        public void OgrenciListele(List<Ogrenci> liste)//16.06.2020 15:30:00 Mert Anıl Deke , Enes Kırış
+        {
+            if (liste.Count == 0)
+            {
+                Console.WriteLine("Listelenecek öğrenci yok.");
+                return;
+            }
+            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(12) + "Adı Soyadı".PadRight(14) + "Not Ort.".PadRight(10) +
+                    "Okudugu Kitap Say");
+            Console.WriteLine("".PadRight(70, '-'));
+
+            foreach (var item in liste)
+            {
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad+" "+item.Soyad.PadRight(14));
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+            
+
+
+        }
 
     }
 }
