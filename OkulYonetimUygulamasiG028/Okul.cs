@@ -72,6 +72,7 @@ namespace OkulYonetimUygulamasiG028
             else if (a == "2")
             {
                 Console.WriteLine("2-Şubeye Göre Öğrencileri Listele" + "".PadRight(15,'-'));
+                SUBE:
                 Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
 
                 string sube = Console.ReadLine().ToUpper();
@@ -95,7 +96,37 @@ namespace OkulYonetimUygulamasiG028
 
                     OgrenciListele(liste);
                 }
+                else
+                {
+                    Console.WriteLine("Böyle bir şube yok. Lütfen tekrar seçim yapınız.");
+                    goto SUBE;
+                    
+                }
 
+            }
+
+            else if (a == "3")
+            {
+                Console.WriteLine("3-Cinsiyete Göre Öğrencileri Listele" + "".PadRight(15,'-'));
+                CINSIYET:
+                Console.Write("Listelemek istediğiniz cinsiyeti girin (E/K): ");
+                string cinsiyet = Console.ReadLine().ToUpper();
+                if (cinsiyet == "E")
+                {
+                    liste = Ogrenciler.Where(a=> a.Cinsiyet == Ogrenci.CINSIYET.Erkek).ToList();
+                    OgrenciListele(liste);
+
+                }
+                else if (cinsiyet == "K")
+                {
+                    liste = Ogrenciler.Where(a=> a.Cinsiyet == Ogrenci.CINSIYET.Kiz).ToList();
+                    OgrenciListele(liste);
+                }
+                else
+                {
+                    Console.WriteLine("Böyle bir cinsiyet yok. Lütfen tekrar seçim yapınız.");
+                    goto CINSIYET;
+                }
             }
 
             return liste;

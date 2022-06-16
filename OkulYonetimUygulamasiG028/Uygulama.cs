@@ -68,7 +68,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciListesiGetir("2");
                         break;
                     case "3":
-                        Console.WriteLine("Cinsiyetine göre öğrencileri listele");
+                        Okul.OgrenciListesiGetir("3"); //EKŞ 19:46
                         break;
                     case "4":
                         Console.WriteLine("Şu tarihten sonra doğan öğrencileri listele");
