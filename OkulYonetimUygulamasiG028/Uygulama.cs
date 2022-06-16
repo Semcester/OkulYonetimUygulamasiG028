@@ -20,7 +20,7 @@ namespace OkulYonetimUygulamasiG028
             SecimAl();
 
         }
-        public void Menu()
+        public void Menu() //Semih Senan 16.06.2022
         {
             Console.WriteLine();
             Console.WriteLine("------  Okul Yönetim Uygulamasi  -----");
@@ -52,7 +52,7 @@ namespace OkulYonetimUygulamasiG028
             
         }
 
-        public void SecimAl()
+        public void SecimAl() //Semih Senan 16.06.2022
         {
             while (true)
             {
@@ -62,7 +62,7 @@ namespace OkulYonetimUygulamasiG028
                 switch (secim)
                 {
                     case "1":
-                        Console.WriteLine("Bütün öğrencileri Listele");
+                        Okul.ButunOgrencileriListele();
                         break;
                     case "2":
                         Console.WriteLine("Şubeye göre öğrencileri listele");
