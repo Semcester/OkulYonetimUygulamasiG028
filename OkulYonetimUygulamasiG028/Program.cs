@@ -14,7 +14,7 @@ namespace OkulYonetimUygulamasiG028
             //5 - Sahte veri girme..
             //6 - Menüleri YAzdırma ve çalıştıklarından emin olma.
             //7 - Görsel tarafları uygulama sınıfına kontrolleri aracgerec sınıfına kayıt işlerini okul sınıfına yaptırıyoruz.
-
+            //8- test test
 
             new Uygulama().Calistir();
 
