@@ -74,7 +74,7 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Şu tarihten sonra doğan öğrencileri listele");
                         break;
                     case "5":
-                        Console.WriteLine("İllere göre sıralayarak öğrencileri listele");
+                        Okul.OgrenciListesiGetir("5"); ;
                         break;
                     case "6":
                         Console.WriteLine("Öğrencinin tüm notlarını listele");

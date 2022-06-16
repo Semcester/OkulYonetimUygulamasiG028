@@ -9,6 +9,8 @@ namespace OkulYonetimUygulamasiG028
     class Okul
     {
 
+        
+        
         public List<Ogrenci> Ogrenciler = new List<Ogrenci>();
 
         public void OgrenciEkle(int no, string ad, string soyad, DateTime dogumtarihi, Ogrenci.CINSIYET cinsiyet,Ogrenci.SUBE sube)
@@ -49,22 +51,11 @@ namespace OkulYonetimUygulamasiG028
 
         }
 
-        //public void ButunOgrencileriListele() //Semih Senan 16.06.2022
-        //{
-        //    Console.WriteLine();
-        //    Console.WriteLine("1-Bütün Öğrencileri Listele --------------------------------------------------");
-        //    Console.WriteLine();
-        //    Console.WriteLine("Şube".PadRight(10) + "No".PadRight(5) + "Adı Soyadı".PadRight(20) + "Not Ort.".PadRight(10) + "Okuduğu Kitap Say.");
-        //    Console.WriteLine("",41,"-");
-
-        //}
-
-
-
         public List<Ogrenci> OgrenciListesiGetir(string a) //16.06.2020 15:30:00 Mert Anıl Deke , Enes Kırış
         {
-            // parametreden aldığımız durum veri tipinde aldığımız veri ile otogaleride araç durumlarına göre listeleme gerçekleştiriyoruz.
+            // parametreden aldığımız durum veri tipinde aldığımız veri ile okuldaki öğrenci durumlarına göre listeleme gerçekleştiriyoruz.
             List<Ogrenci> liste = this.Ogrenciler;
+
             if (a == "1")
             {
                 OgrenciListele(liste);
@@ -129,6 +120,32 @@ namespace OkulYonetimUygulamasiG028
                 }
             }
 
+            // Buraya 4. Seçenek Gelmeli
+
+            else if( a== "5") //Semih Senan 17.06.2022 00:00
+            {
+                //İllere Göre Listele
+
+
+                Console.WriteLine();
+                Console.WriteLine("5-Illere Göre Ögrencileri Listele" + "".PadRight(15, '-'));
+                Console.WriteLine();
+                Console.Write("Listelemek istediğiniz il girin (Ankara): ");
+                string il = Console.ReadLine().ToUpper();
+
+
+
+                //sayi mi yazi mi kontrol'ü eklenecek
+
+
+
+
+                liste = Ogrenciler.Where(a => a.Adres.Il == il).ToList();
+                OgrenciListele(liste);
+
+
+            }
+
             return liste;
 
         }
@@ -140,6 +157,7 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("Listelenecek öğrenci yok.");
                 return;
             }
+            Console.WriteLine();
             Console.WriteLine("Şube".PadRight(10) + "No".PadRight(12) + "Adı Soyadı".PadRight(14) + "Not Ort.".PadRight(10) +
                     "Okudugu Kitap Say");
             Console.WriteLine("".PadRight(70, '-'));
