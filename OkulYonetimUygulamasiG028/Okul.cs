@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OkulYonetimSistemi_GoldenMade_son_ödev;
 
 namespace OkulYonetimUygulamasiG028
 {
@@ -34,7 +35,7 @@ namespace OkulYonetimUygulamasiG028
         {
             //bu noya sahip bir öğrenci olduğundan ve verilerin doğruluğundan eminiz...
             Ogrenci o = this.Ogrenciler.Where(a => a.No == no).FirstOrDefault();
-
+            
             DersNotu dn = new DersNotu(ders, not);
 
             o.Notlar.Add(dn);
@@ -121,6 +122,11 @@ namespace OkulYonetimUygulamasiG028
             }
 
             // Buraya 4. Seçenek Gelmeli
+            else if (a == "4")
+            {
+                AracGerec.SayiAl("Sayi");
+            }
+
 
             else if( a== "5") //Semih Senan 17.06.2022 00:00
             {
