@@ -63,13 +63,13 @@ namespace OkulYonetimUygulamasiG028
                 switch (secim)
                 {
                     case "1":
-                        Okul.OgrenciListesiGetir("1"); //enes
+                        Okul.OgrenciListesiGetir("1");
                         break;
                     case "2":
                         Okul.OgrenciListesiGetir("2");
                         break;
                     case "3":
-                        Okul.OgrenciListesiGetir("3"); //EKŞ 19:46
+                        Okul.OgrenciListesiGetir("3");
                         break;
                     case "4":
                         Okul.OgrenciListesiGetir("4");
@@ -81,7 +81,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciListesiGetir("6");
                         break;
                     case "7":
-                        Console.WriteLine("Öğrencinin okuduğu kitapları listele");
+                        OkunanKitaplar();
                         break;
                     case "8":
                         Console.WriteLine("Okuldaki en yüksek notlu 5 öğrenciyi listele");
@@ -158,6 +158,47 @@ namespace OkulYonetimUygulamasiG028
             }
 
         }
+
+        public void OkunanKitaplar() // 13:20 EKŞ
+        {
+            Console.WriteLine("7-Ögrencinin okudugu kitapları listele "+"".PadRight(20,'-'));
+            NO:
+            int no = AracGerec.SayiAl("Öğrencinin numarası: ");
+            Ogrenci ogrenci = null;
+
+            foreach (var item in Okul.Ogrenciler)
+            {
+                if (no == item.No)
+                {
+                    ogrenci = item;
+                }
+            }
+            if (ogrenci == null)
+            {
+                Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin."); goto NO;
+            }
+            Console.WriteLine();
+            Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
+            Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
+            Console.WriteLine();
+
+            Console.WriteLine("Okuduğu Kitaplar");
+            Console.WriteLine("".PadRight(10,'-'));
+
+            List<string> kitaplar;
+            kitaplar = ogrenci.Kitaplar;
+            if (kitaplar.Count == 0)
+            {
+                Console.WriteLine("Öğrencinin okuduğu bir kitap yok.");
+            }
+            foreach (var item in kitaplar)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+
 
         public void SahteVeriGir()
         {
