@@ -31,7 +31,6 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             }
 
         }
-
         static public bool SayiMi(string mesaj)//16 14 10 6 4 mert 
         {
             foreach (char item in mesaj)
@@ -79,8 +78,6 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
             } while (true);
         }
-
-
         static public string YaziAl(string mesaj)
         {
             do
@@ -88,11 +85,11 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 try
                 {
                     Console.Write(mesaj);
-                    string kontrol = Console.ReadLine();
-                    if (HarfMi(kontrol))
+                    string yazi = Console.ReadLine(); // "Kontrol" "Yazı" ile değiştirildi... Karışıklık olmaması için...
+                    if (HarfMi(yazi))
                     {
 
-                        return kontrol;
+                        return yazi;
 
                     }
                     HataMesaj();

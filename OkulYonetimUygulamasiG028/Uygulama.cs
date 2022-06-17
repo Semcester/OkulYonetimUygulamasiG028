@@ -84,7 +84,7 @@ namespace OkulYonetimUygulamasiG028
                         OkunanKitaplar();
                         break;
                     case "8":
-                        Console.WriteLine("Okuldaki en yüksek notlu 5 öğrenciyi listele");
+                        Okul.EnYuksekNotluBesOgrenci();  //"Okuldaki en yüksek notlu 5 öğrenciyi listele"
                         break;
                     case "9":
                         Okul.EnDusukUc();
@@ -111,7 +111,7 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Öğrenci güncelle");
                         break;
                     case "17":
-                        Console.WriteLine("Öğrenci sil");
+                        Okul.OgrenciSil();
                         break;
                     case "18":
                         Console.WriteLine("Öğrencinin adresini gir");
@@ -157,7 +157,6 @@ namespace OkulYonetimUygulamasiG028
 
                 Okul.NotEkle(no, ders, not);
             }
-
         }
 
         public void OkunanKitaplar() // 13:20 EKŞ
