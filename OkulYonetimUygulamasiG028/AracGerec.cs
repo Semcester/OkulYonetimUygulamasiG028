@@ -88,7 +88,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             {
                 try
                 {
-                    Console.WriteLine(mesaj);
+                    Console.Write(mesaj);
                     string dogum = Console.ReadLine();
                     if (DateTime.TryParse(dogum, out DateTime dogumTarihi))
                     {
@@ -108,7 +108,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
         static void HataMesaj()
         {
-            Console.WriteLine("Hatalı Giriş Yaptınız.");
+            Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
         } // Her yere aynısını yazmak istemedim
 
 

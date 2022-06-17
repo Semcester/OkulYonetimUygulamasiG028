@@ -72,7 +72,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciListesiGetir("3"); //EKŞ 19:46
                         break;
                     case "4":
-                        Console.WriteLine("Şu tarihten sonra doğan öğrencileri listele");
+                        Okul.OgrenciListesiGetir("4");
                         break;
                     case "5":
                         Okul.OgrenciListesiGetir("5"); ;

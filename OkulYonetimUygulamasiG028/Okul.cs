@@ -10,11 +10,11 @@ namespace OkulYonetimUygulamasiG028
     class Okul
     {
 
-        
-        
+
+
         public List<Ogrenci> Ogrenciler = new List<Ogrenci>();
 
-        public void OgrenciEkle(int no, string ad, string soyad, DateTime dogumtarihi, Ogrenci.CINSIYET cinsiyet,Ogrenci.SUBE sube)
+        public void OgrenciEkle(int no, string ad, string soyad, DateTime dogumtarihi, Ogrenci.CINSIYET cinsiyet, Ogrenci.SUBE sube)
         {
             //Bütün kontroller yapılmış olmalı...
 
@@ -26,7 +26,7 @@ namespace OkulYonetimUygulamasiG028
             o.DogumTarihi = dogumtarihi;
             o.Cinsiyet = cinsiyet;
             o.Sube = sube;
-              
+
             this.Ogrenciler.Add(o);
         }
 
@@ -35,7 +35,7 @@ namespace OkulYonetimUygulamasiG028
         {
             //bu noya sahip bir öğrenci olduğundan ve verilerin doğruluğundan eminiz...
             Ogrenci o = this.Ogrenciler.Where(a => a.No == no).FirstOrDefault();
-            
+
             DersNotu dn = new DersNotu(ders, not);
 
             o.Notlar.Add(dn);
@@ -63,28 +63,28 @@ namespace OkulYonetimUygulamasiG028
             }
             else if (a == "2")
             {
-                Console.WriteLine("2-Şubeye Göre Öğrencileri Listele" + "".PadRight(15,'-'));
-                SUBE:
+                Console.WriteLine("2-Şubeye Göre Öğrencileri Listele" + "".PadRight(15, '-'));
+            SUBE:
                 Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
 
                 string sube = Console.ReadLine().ToUpper();
 
                 if (sube == "A")
                 {
-                    liste = this.Ogrenciler.Where(a=> a.Sube == Ogrenci.SUBE.A).ToList();
+                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).ToList();
 
                     OgrenciListele(liste);
-                        
+
                 }
                 else if (sube == "B")
                 {
-                    liste = this.Ogrenciler.Where(a=> a.Sube == Ogrenci.SUBE.B).ToList();
+                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).ToList();
 
                     OgrenciListele(liste);
                 }
                 else if (sube == "C")
                 {
-                    liste = this.Ogrenciler.Where(a=> a.Sube == Ogrenci.SUBE.C).ToList();
+                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).ToList();
 
                     OgrenciListele(liste);
                 }
@@ -92,26 +92,26 @@ namespace OkulYonetimUygulamasiG028
                 {
                     Console.WriteLine("Böyle bir şube yok. Lütfen tekrar seçim yapınız.");
                     goto SUBE;
-                    
+
                 }
 
             }
 
             else if (a == "3")
             {
-                Console.WriteLine("3-Cinsiyete Göre Öğrencileri Listele" + "".PadRight(15,'-'));
-                CINSIYET:
+                Console.WriteLine("3-Cinsiyete Göre Öğrencileri Listele" + "".PadRight(15, '-'));
+            CINSIYET:
                 Console.Write("Listelemek istediğiniz cinsiyeti girin (E/K): ");
                 string cinsiyet = Console.ReadLine().ToUpper();
                 if (cinsiyet == "E")
                 {
-                    liste = Ogrenciler.Where(a=> a.Cinsiyet == Ogrenci.CINSIYET.Erkek).ToList();
+                    liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Erkek).ToList();
                     OgrenciListele(liste);
 
                 }
                 else if (cinsiyet == "K")
                 {
-                    liste = Ogrenciler.Where(a=> a.Cinsiyet == Ogrenci.CINSIYET.Kiz).ToList();
+                    liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Kiz).ToList();
                     OgrenciListele(liste);
                 }
                 else
@@ -122,13 +122,18 @@ namespace OkulYonetimUygulamasiG028
             }
 
             // Buraya 4. Seçenek Gelmeli
-            else if (a == "4")
+            else if (a == "4") //4. Geldiiii by MERTOOO
             {
-                AracGerec.SayiAl("Sayi");
+                Console.WriteLine("4 - Şu tarihten sonra doğan öğrencileri listele ".PadRight(15, '-'));
+                DateTime dogum = AracGerec.TarihAl("Hangi tarihten sonraki ögrencileri listelemek istersiniz: ");
+                liste = Ogrenciler.Where(x => x.DogumTarihi > dogum).OrderBy(x => x.No).ToList();
+                OgrenciListele(liste);
+
+
             }
 
 
-            else if( a== "5") //Semih Senan 17.06.2022 00:00
+            else if (a == "5") //Semih Senan 17.06.2022 00:00
             {
                 //İllere Göre Listele
 
@@ -170,12 +175,12 @@ namespace OkulYonetimUygulamasiG028
 
             foreach (var item in liste)
             {
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad+" "+item.Soyad.PadRight(14));
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad.PadRight(item.Ad.Length+1) + item.Soyad.PadRight(10)+ item.No.ToString().PadRight(14));
             }
 
             Console.WriteLine();
             Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
-            
+
 
 
         }
