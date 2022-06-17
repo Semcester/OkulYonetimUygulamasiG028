@@ -111,7 +111,7 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Öğrenci güncelle");
                         break;
                     case "17":
-                        Console.WriteLine("Öğrenci sil");
+                        Console.WriteLine("Öğrenci silasad");
                         break;
                     case "18":
                         Console.WriteLine("Öğrencinin adresini gir");
