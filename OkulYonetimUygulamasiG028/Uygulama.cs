@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OkulYonetimSistemi_GoldenMade_son_ödev;
 
 namespace OkulYonetimUygulamasiG028
 {
@@ -138,7 +139,7 @@ namespace OkulYonetimUygulamasiG028
 
             Console.Write("Öğrencinin Numarası: ");
             
-            int no = int.Parse(Console.ReadLine()); // ARAC GEREC SINIFINI GÖRMÜYOR BİR SORUN MU VAR ???   
+            int no = AracGerec.SayiAl("Öğrencinin numarasını girin."); //Sorun çözüldü :D
             
             //sayı al methodu...
 
