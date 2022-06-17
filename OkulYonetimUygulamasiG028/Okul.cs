@@ -157,6 +157,18 @@ namespace OkulYonetimUygulamasiG028
 
 
             }
+            else if (a=="6")
+            {
+                Console.WriteLine("6-Ögrencinin notlarını görüntüle" + "".PadRight(15, '-'));
+                int not = AracGerec.SayiAl("Ögrencinin numarası: ");
+
+
+
+
+
+
+
+            }
 
             return liste;
 

@@ -37,7 +37,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 try
                 {
 
-                    Console.WriteLine(giris);
+                    Console.Write(giris);
                     string kontrol = Console.ReadLine();
 
                     if (SayiMi(kontrol))
@@ -63,7 +63,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             {
                 try
                 {
-                    Console.WriteLine(mesaj);
+                    Console.Write(mesaj);
                     string kontrol = Console.ReadLine();
                     if (HarfMi(kontrol))
                     {

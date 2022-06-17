@@ -75,10 +75,10 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciListesiGetir("4");
                         break;
                     case "5":
-                        Okul.OgrenciListesiGetir("5"); ;
+                        Okul.OgrenciListesiGetir("5");
                         break;
                     case "6":
-                        Console.WriteLine("Öğrencinin tüm notlarını listele");
+                        Okul.OgrenciListesiGetir("6");
                         break;
                     case "7":
                         Console.WriteLine("Öğrencinin okuduğu kitapları listele");
