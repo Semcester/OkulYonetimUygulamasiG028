@@ -48,8 +48,8 @@ namespace OkulYonetimUygulamasiG028
             Console.WriteLine();
             Console.WriteLine("Çıkış yapmak için “çıkış” yazıp “enter”a basın.");
             Console.WriteLine();
-          
-            
+
+
         }
 
         public void SecimAl() //Semih Senan 16.06.2022
@@ -57,7 +57,7 @@ namespace OkulYonetimUygulamasiG028
             while (true)
             {
                 Console.Write("Yapmak istediğiniz işlemi seçiniz: ");
-                string secim = Console.ReadLine();             
+                string secim = Console.ReadLine();
 
                 switch (secim)
                 {
@@ -65,7 +65,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciListesiGetir("1"); //enes
                         break;
                     case "2":
-                        Okul.OgrenciListesiGetir("2"); 
+                        Okul.OgrenciListesiGetir("2");
                         break;
                     case "3":
                         Okul.OgrenciListesiGetir("3"); //EKŞ 19:46
@@ -137,7 +137,9 @@ namespace OkulYonetimUygulamasiG028
             Console.WriteLine("20-Not Gir -----------------------------------------------");
 
             Console.Write("Öğrencinin Numarası: ");
-            int no = int.Parse(Console.ReadLine());
+            
+            int no = int.Parse(Console.ReadLine()); // ARAC GEREC SINIFINI GÖRMÜYOR BİR SORUN MU VAR ???
+            
             //sayı al methodu...
 
             Console.WriteLine("Not eklemek istediğiniz ders: ");
@@ -153,7 +155,7 @@ namespace OkulYonetimUygulamasiG028
 
                 Okul.NotEkle(no, ders, not);
             }
-        
+
         }
 
         public void SahteVeriGir()

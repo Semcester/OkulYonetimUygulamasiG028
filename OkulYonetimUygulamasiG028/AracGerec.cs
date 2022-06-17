@@ -8,7 +8,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 {
     class AracGerec
     {
-        static public bool SayiMi(string mesaj)
+        static public bool SayiMi(string mesaj)//16 14 10 6 4 mert 
         {
             foreach (char item in mesaj)
             {
