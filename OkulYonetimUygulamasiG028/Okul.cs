@@ -30,7 +30,6 @@ namespace OkulYonetimUygulamasiG028
             this.Ogrenciler.Add(o);
         }
 
-
         public void NotEkle(int no, string ders, int not)
         {
             //bu noya sahip bir öğrenci olduğundan ve verilerin doğruluğundan eminiz...
@@ -157,34 +156,28 @@ namespace OkulYonetimUygulamasiG028
 
 
             }
-            else if (a=="6") // 6 GELDİ  GOTO HAYAT KURTARIR PART2
+            else if (a == "6") // 6 
             {
                 Console.WriteLine("6-Ögrencinin notlarını görüntüle" + "".PadRight(15, '-'));
-                TEKRAR:
+
                 int no = AracGerec.SayiAl("Ögrencinin numarası: ");
-                Ogrenci o = Ogrenciler.Where(a => a.No == no).FirstOrDefault();
-                liste.Add(o);
-                bool kontrol =BosMu(liste);
-                if (kontrol)
-                {
-                    OgrenciListele(liste);
-                }
-                goto TEKRAR;
-
-
-
+                liste = Ogrenciler.Where(x => x.No == no).ToList();
+                OgrenciListele(liste);
 
 
 
             }
+            else if (a == "10")
+            {
 
+            }
             return liste;
 
         }
 
         public void OgrenciListele(List<Ogrenci> liste)//16.06.2020 15:30:00 Mert Anıl Deke , Enes Kırış
         {
-            if (BosMu(liste))
+            if (liste.Count == 0 || liste == null)
             {
                 Console.WriteLine("Listelenecek öğrenci yok.");
                 return;
@@ -196,7 +189,7 @@ namespace OkulYonetimUygulamasiG028
 
             foreach (var item in liste)
             {
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad +" " + item.Soyad.PadRight(10));
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10));
             }
 
             Console.WriteLine();
@@ -205,18 +198,8 @@ namespace OkulYonetimUygulamasiG028
 
 
         }
-        public bool BosMu(List<Ogrenci> kontrol)
-        {
-            if (kontrol==null || kontrol.Count==0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-       
+
+
 
     }
 }

@@ -17,7 +17,7 @@ namespace OkulYonetimUygulamasiG028
             SahteVeriGir();
             //Menüyazdır
             Menu();
-            //SwitchCase//
+            //SwitchCase
             SecimAl();
 
         }
@@ -90,7 +90,7 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Okuldaki en düşük notlu 3 öğrenciyi listele");
                         break;
                     case "10":
-                        Console.WriteLine("Şubedeki en yüksek notlu 5 öğrenciyi listele");
+                        Okul.OgrenciListesiGetir("6");
                         break;
                     case "11":
                         Console.WriteLine("Şubedeki en düşük notlu 3 öğrenciyi listele");
@@ -111,7 +111,7 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Öğrenci güncelle");
                         break;
                     case "17":
-                        Console.WriteLine("Öğrenci silasad");
+                        Console.WriteLine("Öğrenci sil");
                         break;
                     case "18":
                         Console.WriteLine("Öğrencinin adresini gir");
@@ -138,9 +138,9 @@ namespace OkulYonetimUygulamasiG028
             Console.WriteLine("20-Not Gir -----------------------------------------------");
 
             Console.Write("Öğrencinin Numarası: ");
-            
+
             int no = AracGerec.SayiAl("Öğrencinin numarasını girin."); //Sorun çözüldü :D
-            
+
             //sayı al methodu...
 
             Console.WriteLine("Not eklemek istediğiniz ders: ");
@@ -162,17 +162,17 @@ namespace OkulYonetimUygulamasiG028
         public void SahteVeriGir()
         {
 
-            Okul.OgrenciEkle(20, "Aydın", "Kaya", new DateTime(2009, 7, 9), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.C);
-            Okul.OgrenciEkle(20, "Yunus", "Emre", new DateTime(1975, 8, 27), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
-            Okul.OgrenciEkle(20, "Ayşe", "Fatma", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
-            Okul.OgrenciEkle(20, "Ebru", "Demir", new DateTime(2000, 4, 6), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.A);
-            Okul.OgrenciEkle(20, "Murat", "Kurt", new DateTime(1987, 1, 7), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.C);
-            Okul.OgrenciEkle(20, "Ayşe", "Fatma", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
-            Okul.OgrenciEkle(20, "Burak", "Tok", new DateTime(1990, 3, 27), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
-            Okul.OgrenciEkle(20, "Hayriye", "Durak", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
-            Okul.OgrenciEkle(20, "Nadir", "Işık", new DateTime(2003, 2, 19), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
-            Okul.OgrenciEkle(20, "Nadide", "Başak", new DateTime(1989, 3, 11), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.C);
-            Okul.OgrenciEkle(20, "Bartu", "Özgün", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.B);
+            Okul.OgrenciEkle(1, "Aydın", "Kaya", new DateTime(2009, 7, 9), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.C);
+            Okul.OgrenciEkle(2, "Yunus", "Emre", new DateTime(1975, 8, 27), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
+            Okul.OgrenciEkle(3, "Ayşe", "Fatma", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
+            Okul.OgrenciEkle(41, "Ebru", "Demir", new DateTime(2000, 4, 6), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.A);
+            Okul.OgrenciEkle(4, "Murat", "Kurt", new DateTime(1987, 1, 7), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.C);
+            Okul.OgrenciEkle(5, "Ayşe", "Fatma", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
+            Okul.OgrenciEkle(6, "Burak", "Tok", new DateTime(1990, 3, 27), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
+            Okul.OgrenciEkle(7, "Hayriye", "Durak", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
+            Okul.OgrenciEkle(8, "Nadir", "Işık", new DateTime(2003, 2, 19), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
+            Okul.OgrenciEkle(9, "Nadide", "Başak", new DateTime(1989, 3, 11), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.C);
+            Okul.OgrenciEkle(10, "Bartu", "Özgün", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.B);
 
         }
 

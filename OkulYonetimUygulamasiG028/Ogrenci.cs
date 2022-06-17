@@ -19,7 +19,14 @@ namespace OkulYonetimUygulamasiG028
 
         public DateTime DogumTarihi { get; set; }
 
-        public float Ortalama { get; set; }
+        public float Ortalama
+        {
+            get
+            {
+                return this.Notlar.Average(x => x.Not);
+            }
+
+        }
 
         public Adres Adres = new Adres();
 
@@ -29,18 +36,19 @@ namespace OkulYonetimUygulamasiG028
 
 
 
+
         public enum SUBE
-        { 
-        
+        {
+
             Empty, A, B, C
-        
+
         }
 
         public enum CINSIYET
-        { 
-        
+        {
+
             Empty, Kiz, Erkek
-        
+
         }
 
     }
