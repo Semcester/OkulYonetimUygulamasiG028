@@ -3,11 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OkulYonetimUygulamasiG028;
 
 namespace OkulYonetimSistemi_GoldenMade_son_ödev
 {
     class AracGerec
     {
+
+        static public Ogrenci.SUBE SubeAl(string mesaj)
+        {
+            SUBE:
+            Console.Write(mesaj);
+            string secim = Console.ReadLine().ToUpper();
+            switch (secim)
+            {
+
+            case "A":
+                return Ogrenci.SUBE.A;
+            case "B":
+                return Ogrenci.SUBE.B;
+            case "C":
+                return Ogrenci.SUBE.C;
+                default:
+                    Console.WriteLine("Böyle bir şube yok tekrar deneyiniz.");
+                    goto SUBE;
+                        
+            }
+
+        }
+
         static public bool SayiMi(string mesaj)//16 14 10 6 4 mert 
         {
             foreach (char item in mesaj)

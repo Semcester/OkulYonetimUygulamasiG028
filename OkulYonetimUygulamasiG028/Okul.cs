@@ -63,39 +63,30 @@ namespace OkulYonetimUygulamasiG028
             else if (a == "2")
             {
                 Console.WriteLine("2-Şubeye Göre Öğrencileri Listele" + "".PadRight(15, '-'));
-            SUBE:
-                Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+            
+                Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
 
-                string sube = Console.ReadLine().ToUpper();
-
-                if (sube == "A")
+                if (sube == Ogrenci.SUBE.A)
                 {
                     liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).ToList();
 
                     OgrenciListele(liste);
 
                 }
-                else if (sube == "B")
+                else if (sube == Ogrenci.SUBE.B)
                 {
                     liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).ToList();
 
                     OgrenciListele(liste);
                 }
-                else if (sube == "C")
+                else if (sube == Ogrenci.SUBE.C)
                 {
                     liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).ToList();
 
                     OgrenciListele(liste);
                 }
-                else
-                {
-                    Console.WriteLine("Böyle bir şube yok. Lütfen tekrar seçim yapınız.");
-                    goto SUBE;
-
-                }
 
             }
-
             else if (a == "3")
             {
                 Console.WriteLine("3-Cinsiyete Göre Öğrencileri Listele" + "".PadRight(15, '-'));
