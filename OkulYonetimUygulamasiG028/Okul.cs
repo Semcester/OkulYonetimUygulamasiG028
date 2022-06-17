@@ -30,6 +30,49 @@ namespace OkulYonetimUygulamasiG028
             this.Ogrenciler.Add(o);
         }
 
+
+
+        public void OgrenciOrt()
+        {
+            Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " +"".PadRight(20,'-'));
+            Ogrenci ogrenci = OgrenciNo();
+
+            Console.WriteLine();
+            Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
+            Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
+            Console.WriteLine();
+
+            Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
+
+
+        }
+
+        public void SubeNotOrt()
+        {
+            Console.WriteLine("13-Şubenin Not Ortalamasını Gör " + "".PadRight(20, '-'));
+
+            Ogrenci.SUBE sube = AracGerec.SubeAl("Bir şube seçin (A/B/C): ");
+
+            if (sube == Ogrenci.SUBE.A)
+            {
+                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A).Average(x=> x.Ortalama);
+                Console.WriteLine("A şubesinin not ortalaması: " + ort);
+            }
+            else if (sube == Ogrenci.SUBE.B)
+            {
+                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.B).Average(x=> x.Ortalama);
+                Console.WriteLine("B şubesinin not ortalaması: " + ort);
+            }
+            else if (sube == Ogrenci.SUBE.C)
+            {
+                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.C).Average(x=> x.Ortalama);
+                Console.WriteLine("C şubesinin not ortalaması: " + ort);
+            }
+
+
+
+        }
+
         public void NotEkle(int no, string ders, int not)
         {
             //bu noya sahip bir öğrenci olduğundan ve verilerin doğruluğundan eminiz...
@@ -180,7 +223,7 @@ namespace OkulYonetimUygulamasiG028
 
             foreach (var item in liste)
             {
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10));
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) /*+ item.Ortalama.ToString().PadRight(10)*/);
             }
 
             Console.WriteLine();
@@ -190,7 +233,27 @@ namespace OkulYonetimUygulamasiG028
 
         }
 
+        public Ogrenci OgrenciNo()
+        {
+            
+            NO:
+            int no = AracGerec.SayiAl("Öğrencinin numarası: ");
+            Ogrenci ogrenci = null;
 
+            foreach (var item in this.Ogrenciler)
+            {
+                if (no == item.No)
+                {
+                    ogrenci = item;
+                }
+            }
+
+            if (ogrenci == null)
+            {
+                Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin."); goto NO;
+            }
+            return ogrenci;
+        }
 
     }
 }

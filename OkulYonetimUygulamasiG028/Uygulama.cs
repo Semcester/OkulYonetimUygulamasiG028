@@ -96,10 +96,10 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Şubedeki en düşük notlu 3 öğrenciyi listele");
                         break;
                     case "12":
-                        Console.WriteLine("Öğrencinin not ortalamasını gör");
+                        Okul.OgrenciOrt();
                         break;
                     case "13":
-                        Console.WriteLine("Şubenin not ortalamasını gör");
+                        Okul.SubeNotOrt();
                         break;
                     case "14":
                         Console.WriteLine("Öğrencinin okuduğu son kitabı gör");
@@ -120,7 +120,10 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Öğrencinin okuduğu kitabı gir");
                         break;
                     case "20":
-                        Console.WriteLine("Öğrencinin notunu gir");
+                        NotGir();
+                        break;
+                    case "liste":
+                        Menu();
                         break;
                     case "çıkış":
                         Console.WriteLine("Uygulamadan çıktınız...");
@@ -136,17 +139,15 @@ namespace OkulYonetimUygulamasiG028
         {
 
             Console.WriteLine("20-Not Gir -----------------------------------------------");
-
-            Console.Write("Öğrencinin Numarası: ");
-
-            int no = AracGerec.SayiAl("Öğrencinin numarasını girin."); //Sorun çözüldü :D
+            
+            int no = AracGerec.SayiAl("Öğrencinin numarasını girin: "); //Sorun çözüldü :D
 
             //sayı al methodu...
 
-            Console.WriteLine("Not eklemek istediğiniz ders: ");
+            
             //yazı al...
-            string ders = Console.ReadLine();
-            Console.WriteLine("Eklemek istediğiniz not adedi...");
+            string ders = AracGerec.YaziAl("Not eklemek istediğiniz ders: ");
+            Console.Write("Eklemek istediğiniz not adedi: ");
             int adet = int.Parse(Console.ReadLine());
 
             for (int i = 1; i <= adet; i++)
