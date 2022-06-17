@@ -157,11 +157,19 @@ namespace OkulYonetimUygulamasiG028
 
 
             }
-            else if (a=="6")
+            else if (a=="6") // 6 GELDİ  GOTO HAYAT KURTARIR PART2
             {
                 Console.WriteLine("6-Ögrencinin notlarını görüntüle" + "".PadRight(15, '-'));
-                int not = AracGerec.SayiAl("Ögrencinin numarası: ");
-
+                TEKRAR:
+                int no = AracGerec.SayiAl("Ögrencinin numarası: ");
+                Ogrenci o = Ogrenciler.Where(a => a.No == no).FirstOrDefault();
+                liste.Add(o);
+                bool kontrol =BosMu(liste);
+                if (kontrol)
+                {
+                    OgrenciListele(liste);
+                }
+                goto TEKRAR;
 
 
 
@@ -176,7 +184,7 @@ namespace OkulYonetimUygulamasiG028
 
         public void OgrenciListele(List<Ogrenci> liste)//16.06.2020 15:30:00 Mert Anıl Deke , Enes Kırış
         {
-            if (liste.Count == 0)
+            if (BosMu(liste))
             {
                 Console.WriteLine("Listelenecek öğrenci yok.");
                 return;
@@ -197,6 +205,18 @@ namespace OkulYonetimUygulamasiG028
 
 
         }
+        public bool BosMu(List<Ogrenci> kontrol)
+        {
+            if (kontrol==null || kontrol.Count==0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+       
 
     }
 }
