@@ -15,6 +15,9 @@ namespace OkulYonetimUygulamasiG028
             //6 - Menüleri YAzdırma ve çalıştıklarından emin olma.
             //7 - Görsel tarafları uygulama sınıfına kontrolleri aracgerec sınıfına kayıt işlerini okul sınıfına yaptırıyoruz.
 
+            //doğukan test
+
+
             new Uygulama().Calistir();
    
         }
