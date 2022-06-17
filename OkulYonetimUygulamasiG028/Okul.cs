@@ -124,6 +124,7 @@ namespace OkulYonetimUygulamasiG028
             // Buraya 4. Seçenek Gelmeli
             else if (a == "4") //4. Geldiiii by MERTOOO
             {
+
                 Console.WriteLine("4 - Şu tarihten sonra doğan öğrencileri listele ".PadRight(15, '-'));
                 DateTime dogum = AracGerec.TarihAl("Hangi tarihten sonraki ögrencileri listelemek istersiniz: ");
                 liste = Ogrenciler.Where(x => x.DogumTarihi > dogum).OrderBy(x => x.No).ToList();
@@ -175,7 +176,7 @@ namespace OkulYonetimUygulamasiG028
 
             foreach (var item in liste)
             {
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad.PadRight(item.Ad.Length+1) + item.Soyad.PadRight(10)+ item.No.ToString().PadRight(14));
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad +" " + item.Soyad.PadRight(10));
             }
 
             Console.WriteLine();
