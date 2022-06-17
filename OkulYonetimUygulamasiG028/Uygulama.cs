@@ -138,7 +138,7 @@ namespace OkulYonetimUygulamasiG028
 
             Console.Write("Öğrencinin Numarası: ");
             
-            int no = int.Parse(Console.ReadLine()); // ARAC GEREC SINIFINI GÖRMÜYOR BİR SORUN MU VAR ???
+            int no = int.Parse(Console.ReadLine()); // ARAC GEREC SINIFINI GÖRMÜYOR BİR SORUN MU VAR ???   
             
             //sayı al methodu...
 
