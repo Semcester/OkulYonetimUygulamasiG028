@@ -35,8 +35,7 @@ namespace OkulYonetimUygulamasiG028
         public List<DersNotu> Notlar = new List<DersNotu>();
 
 
-
-
+        
         public enum SUBE
         {
 

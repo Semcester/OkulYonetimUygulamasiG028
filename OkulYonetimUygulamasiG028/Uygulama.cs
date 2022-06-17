@@ -179,8 +179,7 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin."); goto NO;
             }
             Console.WriteLine();
-            Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
-            Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
+            Okul.OgrenciAdi(ogrenci.No);
             Console.WriteLine();
 
             Console.WriteLine("Okuduğu Kitaplar");

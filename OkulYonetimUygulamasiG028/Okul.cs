@@ -245,18 +245,9 @@ namespace OkulYonetimUygulamasiG028
             Ogrenci o = OgrenciNo();
             liste = Ogrenciler.Where(x => x.No == o.No).ToList();
             
-            DersNotu onundersleri = new DersNotu("ders",5);
-            o.Notlar.Add(onundersleri);
-            Console.WriteLine(onundersleri.DersAdi);
-            YazdirBi(liste);
-            /*
-             * O
-             * 
-             * 
-             * 
-             * 
-             */
-
+            
+            
+            
         }
 
         public void YazdirBi(List<Ogrenci> liste)
@@ -266,7 +257,7 @@ namespace OkulYonetimUygulamasiG028
 
             foreach (var item in liste)
             {
-                Console.WriteLine(item.Notlar.ToString().PadRight(10));
+               
 
             }
 
@@ -316,6 +307,14 @@ namespace OkulYonetimUygulamasiG028
             }
             return ogrenci;
         }
+        public void OgrenciAdi(int numara)
+        {
 
+            Ogrenci o = this.Ogrenciler.Where(x => x.No == numara).FirstOrDefault();
+
+            Console.WriteLine("Öğrencinin Adı Soyadı: " + o.Ad + " " + o.Soyad);
+            Console.WriteLine("Öğrencinin Şubesi: " + o.Sube);
+
+        }
     }
 }
