@@ -17,7 +17,7 @@ namespace OkulYonetimUygulamasiG028
             SahteVeriGir();
             //Menüyazdır
             Menu();
-            //SwitchCase
+            //SwitchCase//
             SecimAl();
 
         }
