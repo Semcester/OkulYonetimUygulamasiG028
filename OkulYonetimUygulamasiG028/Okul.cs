@@ -34,7 +34,7 @@ namespace OkulYonetimUygulamasiG028
 
         public void OgrenciOrt()
         {
-            Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " +"".PadRight(20,'-'));
+            Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " + "".PadRight(20, '-'));
             Ogrenci ogrenci = OgrenciNo();
 
             Console.WriteLine();
@@ -55,21 +55,59 @@ namespace OkulYonetimUygulamasiG028
 
             if (sube == Ogrenci.SUBE.A)
             {
-                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A).Average(x=> x.Ortalama);
+                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A).Average(x => x.Ortalama);
                 Console.WriteLine("A şubesinin not ortalaması: " + ort);
             }
             else if (sube == Ogrenci.SUBE.B)
             {
-                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.B).Average(x=> x.Ortalama);
+                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.B).Average(x => x.Ortalama);
                 Console.WriteLine("B şubesinin not ortalaması: " + ort);
             }
             else if (sube == Ogrenci.SUBE.C)
             {
-                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.C).Average(x=> x.Ortalama);
+                double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.C).Average(x => x.Ortalama);
                 Console.WriteLine("C şubesinin not ortalaması: " + ort);
             }
 
 
+
+        }
+        public void EnDusukUc() // SM 9 numaralı başlık-17.06.2022
+        {
+            List<Ogrenci> enDusukUc = Ogrenciler.OrderBy(a => a.Ortalama).Take(3).ToList();
+            OgrenciListele(enDusukUc);
+
+        }
+
+        public void EnDusukUcSube() // SM 11 numaralı başlık-17.06.2022
+        {
+            List<Ogrenci> liste = this.Ogrenciler;
+
+            Console.WriteLine("3-Şubedeki en başarısız 3 öğrenciyi listele" + "".PadRight(15, '-'));
+        SUBE:
+            Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+            string sube = Console.ReadLine().ToUpper();
+            if (sube == "A")
+            {
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).ToList();
+                OgrenciListele(liste);
+
+            }
+            else if (sube == "B")
+            {
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).ToList();
+                OgrenciListele(liste);
+            }
+            else if (sube == "C")
+            {
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).ToList();
+                OgrenciListele(liste);
+            }
+            else
+            {
+                Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
+                goto SUBE;
+            }
 
         }
 
@@ -106,7 +144,7 @@ namespace OkulYonetimUygulamasiG028
             else if (a == "2")
             {
                 Console.WriteLine("2-Şubeye Göre Öğrencileri Listele" + "".PadRight(15, '-'));
-            
+
                 Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
 
                 if (sube == Ogrenci.SUBE.A)
@@ -190,17 +228,7 @@ namespace OkulYonetimUygulamasiG028
 
 
             }
-            else if (a == "6") // 6 
-            {
-                Console.WriteLine("6-Ögrencinin notlarını görüntüle" + "".PadRight(15, '-'));
 
-                int no = AracGerec.SayiAl("Ögrencinin numarası: ");
-                liste = Ogrenciler.Where(x => x.No == no).ToList();
-                OgrenciListele(liste);
-
-
-
-            }
             else if (a == "10")
             {
 
@@ -208,6 +236,42 @@ namespace OkulYonetimUygulamasiG028
             return liste;
 
         }
+        public void OgrenciNotlariGoruntule()
+        {
+
+
+            Console.WriteLine("6-Ögrencinin notlarını görüntüle" + "".PadRight(15, '-'));
+            List<Ogrenci> liste = this.Ogrenciler;
+            Ogrenci o = OgrenciNo();
+            liste = Ogrenciler.Where(x => x.No == o.No).ToList();
+            
+            DersNotu onundersleri = new DersNotu("ders",5);
+            o.Notlar.Add(onundersleri);
+            Console.WriteLine(onundersleri.DersAdi);
+            YazdirBi(liste);
+            /*
+             * O
+             * 
+             * 
+             * 
+             * 
+             */
+
+        }
+
+        public void YazdirBi(List<Ogrenci> liste)
+        {
+            Console.WriteLine("Ders Adı".PadRight(18) + "Notu");
+            Console.WriteLine("".PadRight(25, '-'));
+
+            foreach (var item in liste)
+            {
+                Console.WriteLine(item.Notlar.ToString().PadRight(10));
+
+            }
+
+        }
+
 
         public void OgrenciListele(List<Ogrenci> liste)//16.06.2020 15:30:00 Mert Anıl Deke , Enes Kırış
         {
@@ -229,14 +293,12 @@ namespace OkulYonetimUygulamasiG028
             Console.WriteLine();
             Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
 
-
-
         }
 
         public Ogrenci OgrenciNo()
         {
-            
-            NO:
+
+        NO:
             int no = AracGerec.SayiAl("Öğrencinin numarası: ");
             Ogrenci ogrenci = null;
 

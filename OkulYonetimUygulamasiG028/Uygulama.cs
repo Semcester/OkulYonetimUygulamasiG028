@@ -78,7 +78,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciListesiGetir("5");
                         break;
                     case "6":
-                        Okul.OgrenciListesiGetir("6");
+                        Okul.OgrenciNotlariGoruntule();
                         break;
                     case "7":
                         OkunanKitaplar();
@@ -87,13 +87,13 @@ namespace OkulYonetimUygulamasiG028
                         Console.WriteLine("Okuldaki en yüksek notlu 5 öğrenciyi listele");
                         break;
                     case "9":
-                        Console.WriteLine("Okuldaki en düşük notlu 3 öğrenciyi listele");
+                        Okul.EnDusukUc();
                         break;
                     case "10":
                         Okul.OgrenciListesiGetir("6");
                         break;
                     case "11":
-                        Console.WriteLine("Şubedeki en düşük notlu 3 öğrenciyi listele");
+                        Okul.EnDusukUcSube();
                         break;
                     case "12":
                         Okul.OgrenciOrt();
