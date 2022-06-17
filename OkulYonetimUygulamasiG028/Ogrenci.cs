@@ -33,7 +33,7 @@ namespace OkulYonetimUygulamasiG028
         public List<string> Kitaplar = new List<string>();
 
         public List<DersNotu> Notlar = new List<DersNotu>();
-
+        
 
         
         public enum SUBE

@@ -76,6 +76,7 @@ namespace OkulYonetimUygulamasiG028
         {
             List<Ogrenci> enDusukUc = Ogrenciler.OrderBy(a => a.Ortalama).Take(3).ToList();
             OgrenciListele(enDusukUc);
+            
 
         }
 
@@ -114,11 +115,26 @@ namespace OkulYonetimUygulamasiG028
         public void NotEkle(int no, string ders, int not)
         {
             //bu noya sahip bir öğrenci olduğundan ve verilerin doğruluğundan eminiz...
+            
             Ogrenci o = this.Ogrenciler.Where(a => a.No == no).FirstOrDefault();
 
             DersNotu dn = new DersNotu(ders, not);
 
             o.Notlar.Add(dn);
+            YeniListele(no);
+        }
+        public void YeniListele(int numara)
+        {
+            Ogrenci o = this.Ogrenciler.Where(a => a.No == numara).FirstOrDefault();
+            for (int i = 0; i < o.Notlar.Count; i++)
+            {
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("YeniListele(int numara) ÇALIŞTI");
+                Console.WriteLine();
+                Console.WriteLine(o.Notlar[i].DersAdi+"  "+ o.Notlar[i].Not);
+            }
+
+
         }
 
         public void AdresEkle(int no, string il, string ilce, string mahalle)
@@ -236,7 +252,7 @@ namespace OkulYonetimUygulamasiG028
             return liste;
 
         }
-        public void OgrenciNotlariGoruntule()
+        public void OgrenciNotlariGoruntule()//6
         {
 
 
@@ -244,22 +260,22 @@ namespace OkulYonetimUygulamasiG028
             List<Ogrenci> liste = this.Ogrenciler;
             Ogrenci o = OgrenciNo();
             liste = Ogrenciler.Where(x => x.No == o.No).ToList();
-            
-            
-            
-            
+            OgrenciAdiSubesi(o.No);
+            YazdirBi(liste);
+
+
+
+
         }
 
         public void YazdirBi(List<Ogrenci> liste)
         {
             Console.WriteLine("Ders Adı".PadRight(18) + "Notu");
             Console.WriteLine("".PadRight(25, '-'));
+            DersNotu a = new DersNotu("matematik", 15);
 
-            foreach (var item in liste)
-            {
-               
+            Console.WriteLine(a.DersAdi + "    " + a.Not);
 
-            }
 
         }
 
@@ -307,13 +323,14 @@ namespace OkulYonetimUygulamasiG028
             }
             return ogrenci;
         }
-        public void OgrenciAdi(int numara)
+        public void OgrenciAdiSubesi(int numara)
         {
 
             Ogrenci o = this.Ogrenciler.Where(x => x.No == numara).FirstOrDefault();
-
+            Console.WriteLine();
             Console.WriteLine("Öğrencinin Adı Soyadı: " + o.Ad + " " + o.Soyad);
             Console.WriteLine("Öğrencinin Şubesi: " + o.Sube);
+            Console.WriteLine();
 
         }
     }

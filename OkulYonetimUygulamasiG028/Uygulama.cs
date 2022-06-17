@@ -178,10 +178,8 @@ namespace OkulYonetimUygulamasiG028
             {
                 Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin."); goto NO;
             }
-            Console.WriteLine();
-            Okul.OgrenciAdi(ogrenci.No);
-            Console.WriteLine();
-
+            Okul.OgrenciAdiSubesi(ogrenci.No);
+            
             Console.WriteLine("Okuduğu Kitaplar");
             Console.WriteLine("".PadRight(10,'-'));
 
