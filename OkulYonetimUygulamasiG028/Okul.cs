@@ -249,15 +249,14 @@ namespace OkulYonetimUygulamasiG028
             }
 
 
-            else if (a == "5") //Semih Senan 17.06.2022 00:00 İllere Göre Listele
+            else if (a == "5") //Semih Senan 19.06.2022 01:55 İllere Göre Listele
             {
-      
+
                 Console.WriteLine();
                 Console.WriteLine("5-Illere Göre Ögrencileri Listele" + "".PadRight(15, '-'));
                 Console.WriteLine();
 
-
-                liste = Ogrenciler.OrderBy(a => a.Adres.Il).ToList(); //WHERE YAZIYORDU ORDERBY YAPTIM -MERTO
+                liste = this.Ogrenciler.Where(a => a.Adres.Il != null).ToList();
                 IllereGoreOgrenciListele(liste);
 
 
@@ -380,26 +379,31 @@ namespace OkulYonetimUygulamasiG028
         }
         public void IllereGoreOgrenciListele(List<Ogrenci> liste)//18.06.2020 00:33:00 Semih Senan
         {
-            if (liste.Count == 0 || liste == null)
+            if (liste.Count == 0)
             {
-                Console.WriteLine("Listelenecek öğrenci yok.");
+                Console.WriteLine("Öğrenci adres bilgisi yok.");
+                Console.WriteLine();
                 return;
             }
+            liste = liste.OrderBy(b => b.Adres.Il).ToList();
+
+
             Console.WriteLine();
-            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(10) + "Adı Soyadı".PadRight(20) + "Sehir".PadRight(15) + "Semt".PadRight(14)+ "Mahalle");
+            Console.WriteLine();
+            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(10) + "Adı Soyadı".PadRight(20) + "Sehir".PadRight(15) + "Semt".PadRight(14) + "Mahalle");
             Console.WriteLine("".PadRight(90, '-'));
 
-            foreach (var item in liste)
-            {
-                if (item.Adres.Il == null)
-                {
-                    Console.WriteLine("Listelenecek öğrenci yok.");
-                    return;
 
-                }
+            foreach (Ogrenci item in liste)
+            {
                 string adSoyad = item.Ad + " " + item.Soyad;
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(9) + adSoyad.PadRight(20) + item.Adres.Il.ToString().PadRight(15) + item.Adres.Ilce.PadRight(15)+item.Adres.Mahalle);
+
+
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(10) + adSoyad.PadRight(20) + item.Adres.Il.ToString().PadRight(15) + item.Adres.Ilce.PadRight(15) + item.Adres.Mahalle);
+
             }
+
+            Console.WriteLine();
 
             AracGerec.MenuMesaji();
 
