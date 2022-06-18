@@ -145,6 +145,34 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
 
         }
+        //static public Ogrenci.SUBE SubeAl(string mesaj)
+        public static Ogrenci.CINSIYET CinsiyetAl(string mesaj)
+        {
+            while (true)
+            {
+
+                Console.Write(mesaj);
+                string cins = Console.ReadLine().ToUpper();
+                switch (cins)
+                {
+                    case "K":
+                        return Ogrenci.CINSIYET.Erkek;
+                    case "E":
+                        return Ogrenci.CINSIYET.Kiz;
+                    default:
+                        HataMesaj();
+                        break;
+
+                }
+
+            }
+
+        }
+
+
+
+
+
 
         static void HataMesaj()
         {

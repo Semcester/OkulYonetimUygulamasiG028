@@ -108,7 +108,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.YeniOgrenci();
                         break;
                     case "16":
-                        Console.WriteLine("Öğrenci güncelle");
+                        Okul.OgrenciGuncelle();
                         break;
                     case "17":
                         Okul.OgrenciSil();

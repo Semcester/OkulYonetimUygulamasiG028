@@ -451,6 +451,43 @@ namespace OkulYonetimUygulamasiG028
                 return sayi;
             }
         }
+        public void OgrenciGuncelle()
+        {
+
+            Console.WriteLine("16-Öğrenci Güncelle" + "".PadRight(15, '-'));
+        TEKRAR:
+            int ogrenciNo = AracGerec.SayiAl("Öğrencinin numarası: ");
+            Ogrenci g = Ogrenciler.Where(x=>x.No == ogrenciNo).FirstOrDefault();
+            if (g != null)
+            {
+                string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
+                string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
+                DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğun tarihi: ");
+                Ogrenci.CINSIYET eOrk = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K): ");
+                Ogrenci.SUBE sube = AracGerec.SubeAl("Öğrencinin Şubesi (A/B/C): ");
+                g.Ad = ogrenciAdi;
+                g.Soyad = ogrenciSoyadi;
+                g.DogumTarihi = dogumTarihi;
+                g.Cinsiyet = eOrk;
+                g.Sube = sube;
+                Console.WriteLine();
+                Console.WriteLine("Öğrenci Güncellendi");
+                Console.WriteLine();
+                Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Bu numaraya ait bir öğrenci yok Tekrar Deneyin."); goto TEKRAR;
+            }
+
+
+
+
+
+        }
+
+
 
         public void YeniOgrenci() // SM 16.06.2022
         {
