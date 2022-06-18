@@ -105,7 +105,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciListesiGetir("14");
                         break;
                     case "15":
-                        Console.WriteLine("Öğrenci ekle");
+                        Okul.YeniOgrenci();
                         break;
                     case "16":
                         Console.WriteLine("Öğrenci güncelle");

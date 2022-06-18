@@ -287,9 +287,6 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
                 Console.WriteLine();
 
-
-
-
             }
             return liste;
 
@@ -420,5 +417,105 @@ namespace OkulYonetimUygulamasiG028
                     goto SECIM;
             }
         }
+        public int NoKontrol(int sayi) //SM 16.06.2022
+        {
+            Ogrenci a = null;
+
+            foreach (Ogrenci item in Ogrenciler)
+            {
+                if (item.No == sayi)
+                {
+                    a = item;
+                }
+            }
+
+            if (a != null)
+            {
+                while (true)
+                {
+                YUKARI:
+                    foreach (Ogrenci item in Ogrenciler)
+                    {
+                        if (item.No == sayi)
+                        {
+                            sayi += 1;
+                            goto YUKARI;
+                        }
+                    }
+                    Console.WriteLine("Numara mevcut bir öğrenciye ait olduğu için sıradaki boş numara atanmıştır: " + sayi);
+                    return sayi;
+                }
+            }
+            else
+            {
+                return sayi;
+            }
+        }
+
+        public void YeniOgrenci() // SM 16.06.2022
+        {
+            Console.WriteLine("15-Öğrenci Ekle" + "".PadRight(15, '-'));
+            int ogrenciNo = NoKontrol(AracGerec.SayiAl("Öğrencinin numarası: "));
+            string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
+            string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
+            DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğun tarihi: ");
+
+            Ogrenci.CINSIYET cinsiyet;
+            Ogrenci.SUBE eklenecekSube;
+
+
+            Console.Write("Öğrencinin cinsiyeti (E/K)");
+
+            while (true)
+            {
+                string secim = Console.ReadLine().ToUpper();
+
+                if (secim == "E")
+                {
+                    cinsiyet = Ogrenci.CINSIYET.Erkek;
+                    break;
+                }
+                else if (secim == "K")
+                {
+                    cinsiyet = Ogrenci.CINSIYET.Kiz;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("E veya K olarak giriş yapın");
+                }
+
+            }
+
+            Console.Write("Öğrencinin Şubesi (A/B/C)");
+
+            while (true)
+            {
+                string sube = Console.ReadLine().ToUpper();
+
+                if (sube == "A")
+                {
+                    eklenecekSube = Ogrenci.SUBE.A;
+                    break;
+
+                }
+                else if (sube == "B")
+                {
+                    eklenecekSube = Ogrenci.SUBE.B;
+                    break;
+                }
+                else if (sube == "C")
+                {
+                    eklenecekSube = Ogrenci.SUBE.C;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("A,B veya C olarak giriş yapın.");
+                }
+            }
+            OgrenciEkle(ogrenciNo, ogrenciAdi, ogrenciSoyadi, dogumTarihi, cinsiyet, eklenecekSube);
+        }
+
     }
 }
