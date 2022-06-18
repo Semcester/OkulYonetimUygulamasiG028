@@ -253,7 +253,7 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine();
                 string il = AracGerec.YaziAl("Listelemek istediğiniz il girin (Ankara): ");
 
-                liste = Ogrenciler.Where(a => a.Adres.Il == il.ToUpper()).ToList();
+                liste = Ogrenciler.OrderBy(a => a.Adres.Il == il.ToUpper()).ToList(); //WHERE YAZIYORDU ORDERBY YAPTIM -MERTO
                 IllereGoreOgrenciListele(liste);
 
 
@@ -262,21 +262,35 @@ namespace OkulYonetimUygulamasiG028
             else if (a == "10") //Ortalama HATASI YÜZÜNDEN ADA GÖRE SIRALADIM X.AD DEĞİŞECEK 
             {
                 Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+                Console.WriteLine();
                 liste = Ogrenciler.Where(x => x.Sube == sube).OrderByDescending(x => x.Ad).Take(5).ToList();
                 OgrenciListele(liste);
             }
 
-            //else if (a == "14")
-            //{
-            //    Console.WriteLine("14 - Ögrencinin okudugu son kitabı listele "+ "".PadRight(15, '-'));
-            //    int no = AracGerec.SayiAl("Öğrencinin Numarası: ");
-            //    Ogrenci yeni =Ogrenciler.Where
+            else if (a == "14")
+            {
+                Console.WriteLine();
+                Console.WriteLine("14 - Ögrencinin okudugu son kitabı listele " + "".PadRight(15, '-'));
+            OGRENCIGIR:
+                int no = AracGerec.SayiAl("Öğrencinin Numarası: ");
+                Ogrenci og = Ogrenciler.Where(x => x.No == no).FirstOrDefault();
+                if (og == null)
+                {
+                    Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin.");
+                    goto OGRENCIGIR;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Ögrencinin Okudugu Son Kitap ");
+                Console.WriteLine("".PadRight(30, '-'));
+                Console.WriteLine(og.Kitaplar[og.Kitaplar.Count - 1].ToString());
+                Console.WriteLine();
+                Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+                Console.WriteLine();
 
 
 
 
-
-            //}
+            }
             return liste;
 
         }

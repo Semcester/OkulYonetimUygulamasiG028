@@ -30,7 +30,7 @@ namespace OkulYonetimUygulamasiG028
 
         public Adres Adres = new Adres();
 
-        public List<string> Kitaplar = new List<string>();
+        public List<string> Kitaplar = new List<string>() { "George Orwell- 1984","Ali Okulda","Büyük Kurtuluş","Bülbülü Öldürmek","Ince Mehmet" };
 
         public List<DersNotu> Notlar = new List<DersNotu>();
         

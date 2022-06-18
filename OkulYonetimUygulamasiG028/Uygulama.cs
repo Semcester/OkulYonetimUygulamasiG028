@@ -102,7 +102,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.SubeNotOrt();
                         break;
                     case "14":
-                        Console.WriteLine("Öğrencinin okuduğu son kitabı gör");
+                        Okul.OgrenciListesiGetir("14");
                         break;
                     case "15":
                         Console.WriteLine("Öğrenci ekle");
