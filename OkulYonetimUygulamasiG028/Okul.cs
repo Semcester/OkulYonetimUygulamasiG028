@@ -259,14 +259,28 @@ namespace OkulYonetimUygulamasiG028
 
             }
 
-            else if (a == "10")
+            else if (a == "10") //Ortalama HATASI YÜZÜNDEN ADA GÖRE SIRALADIM X.AD DEĞİŞECEK 
             {
-
+                Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+                liste = Ogrenciler.Where(x => x.Sube == sube).OrderByDescending(x => x.Ad).Take(5).ToList();
+                OgrenciListele(liste);
             }
+
+            //else if (a == "14")
+            //{
+            //    Console.WriteLine("14 - Ögrencinin okudugu son kitabı listele "+ "".PadRight(15, '-'));
+            //    int no = AracGerec.SayiAl("Öğrencinin Numarası: ");
+            //    Ogrenci yeni =Ogrenciler.Where
+
+
+
+
+
+            //}
             return liste;
 
         }
-       
+
         public void OgrenciNotlariGoruntule()//6 METOT ÇALIŞIYOR FAKAT İLK ÖNCE EKLEME YAPILMASI GEREKİYOR
         {
 

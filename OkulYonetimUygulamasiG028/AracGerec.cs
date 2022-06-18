@@ -12,22 +12,22 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
         static public Ogrenci.SUBE SubeAl(string mesaj)
         {
-            SUBE:
+        SUBE:
             Console.Write(mesaj);
             string secim = Console.ReadLine().ToUpper();
             switch (secim)
             {
 
-            case "A":
-                return Ogrenci.SUBE.A;
-            case "B":
-                return Ogrenci.SUBE.B;
-            case "C":
-                return Ogrenci.SUBE.C;
+                case "A":
+                    return Ogrenci.SUBE.A;
+                case "B":
+                    return Ogrenci.SUBE.B;
+                case "C":
+                    return Ogrenci.SUBE.C;
                 default:
                     Console.WriteLine("Böyle bir şube yok tekrar deneyiniz.");
                     goto SUBE;
-                        
+
             }
 
         }
@@ -125,6 +125,25 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 }
 
             } while (true);
+        }
+
+        public bool OgrenciBul(int no)
+        {
+            while (true)
+            {
+
+                List<Ogrenci> ogrenci = new List<Ogrenci>();
+
+                Ogrenci yeni = ogrenci.Where(x => x.No == no).FirstOrDefault();
+                if (yeni != null)
+                {
+                    return true;
+                }
+                Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin.");
+
+            }
+
+
         }
 
         static void HataMesaj()

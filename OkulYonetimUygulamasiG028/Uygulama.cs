@@ -90,7 +90,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.EnDusukUc();
                         break;
                     case "10":
-                        Okul.OgrenciListesiGetir("6");
+                        Okul.OgrenciListesiGetir("10");
                         break;
                     case "11":
                         Okul.EnDusukUcSube();
@@ -135,28 +135,30 @@ namespace OkulYonetimUygulamasiG028
                 }
             }
         }
-        public void NotGir()
+        public void NotGir() //Düzenlenmesi gerekli. Girilen numara ogrencilerde var mı kontrol lazım -Merto
         {
-
+            
             Console.WriteLine("20-Not Gir -----------------------------------------------");
             
-            int no = AracGerec.SayiAl("Öğrencinin numarasını girin: "); //Sorun çözüldü :D
-
-            //sayı al methodu...
-
+            int no = AracGerec.SayiAl("Öğrencinin numarasını girin: ");  
             
-            //yazı al...
+            Okul.OgrenciAdiSubesi(no);
+
             string ders = AracGerec.YaziAl("Not eklemek istediğiniz ders: ");
             Console.Write("Eklemek istediğiniz not adedi: ");
             int adet = int.Parse(Console.ReadLine());
-
             for (int i = 1; i <= adet; i++)
             {
                 Console.Write(i + ". Notu Girin: ");
-                int not = int.Parse(Console.ReadLine());
-
+                
+                    int not = int.Parse(Console.ReadLine());
+                
                 Okul.NotEkle(no, ders, not);
             }
+            //Console.WriteLine();
+            //Console.WriteLine("Bilgiler Sisteme Girilmiştir.");
+            //Console.WriteLine();
+
         }
 
         public void OkunanKitaplar() // 13:20 EKŞ
