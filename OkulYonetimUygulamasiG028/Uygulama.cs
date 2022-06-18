@@ -134,7 +134,17 @@ namespace OkulYonetimUygulamasiG028
                         break;
                 }
             }
-        }
+        } 
+        
+        // Şubeye yanlış girilince yanlış girildi diyecek....
+        //cinsiyette sayı girilince hatalı giriş olacak....
+        //5. metot düzenlenicek.
+        //başharf metodu
+        //öğrenicinin notu yoksa notu yok yazacak listelemeyecek 6
+        // 8. metot ve ORTALAMA KONTROL
+        // 15. METOT düzenlenece
+        //not gir düzenlenecek
+        
         public void NotGir() //Düzenlenmesi gerekli. Girilen numara ogrencilerde var mı kontrol lazım -Merto
         {
             

@@ -11,6 +11,7 @@ namespace OkulYonetimUygulamasiG028
     {
 
         public List<Ogrenci> Ogrenciler = new List<Ogrenci>();
+        
         public void OgrenciEkle(int no, string ad, string soyad, DateTime dogumtarihi, Ogrenci.CINSIYET cinsiyet, Ogrenci.SUBE sube)
         {
             //Bütün kontroller yapılmış olmalı...
@@ -357,11 +358,11 @@ namespace OkulYonetimUygulamasiG028
             Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
 
         }
-        public Ogrenci OgrenciNo()
+        public Ogrenci OgrenciNo()//enes kırış
         {
-
+            //99
         NO:
-            int no = AracGerec.SayiAl("Öğrencinin numarası: ");
+            int no = AracGerec.SayiAl("Öğrencinin numarası: ");//99
             Ogrenci ogrenci = null;
 
             foreach (var item in this.Ogrenciler)
@@ -377,6 +378,8 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin."); goto NO;
             }
             return ogrenci;
+
+
         }
         public void OgrenciAdiSubesi(int numara)
         {

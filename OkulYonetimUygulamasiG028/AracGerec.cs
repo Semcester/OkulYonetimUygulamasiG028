@@ -126,25 +126,6 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
             } while (true);
         }
-
-        public bool OgrenciBul(int no)
-        {
-            while (true)
-            {
-
-                List<Ogrenci> ogrenci = new List<Ogrenci>();
-
-                Ogrenci yeni = ogrenci.Where(x => x.No == no).FirstOrDefault();
-                if (yeni != null)
-                {
-                    return true;
-                }
-                Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin.");
-
-            }
-
-
-        }
         //static public Ogrenci.SUBE SubeAl(string mesaj)
         public static Ogrenci.CINSIYET CinsiyetAl(string mesaj)
         {
@@ -169,18 +150,10 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
         }
 
-
-
-
-
-
         static void HataMesaj()
         {
             Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
         } // Her yere aynısını yazmak istemedim
-
-
-
 
     }
 }
