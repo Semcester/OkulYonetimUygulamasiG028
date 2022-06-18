@@ -325,6 +325,7 @@ namespace OkulYonetimUygulamasiG028
             Console.WriteLine("");
             Console.WriteLine("Bilgileri Sisteme Girilmiştir...");
             Console.WriteLine("");
+            AracGerec.MenuMesaji();
         }
 
         public void OgrenciNotlariGoruntule()//6 METOT ÇALIŞIYOR FAKAT İLK ÖNCE EKLEME YAPILMASI GEREKİYOR
@@ -365,13 +366,13 @@ namespace OkulYonetimUygulamasiG028
                 return;
             }
             Console.WriteLine();
-            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(12) + "Adı Soyadı".PadRight(14) + "Not Ort.".PadRight(10) +
-                    "Okudugu Kitap Say");
+            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(12) + "Adı Soyadı".PadRight(14) + "Not Ort.".PadRight(10) + "Okudugu Kitap Say");
             Console.WriteLine("".PadRight(70, '-'));
 
             foreach (var item in liste)
             {
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) /*+ item.Ortalama.ToString().PadRight(10)*/);
+                string adSoyad = item.Ad + " " + item.Soyad;
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + adSoyad.PadRight(10) /*+ item.Ortalama.ToString().PadRight(10)*/);
             }
 
             AracGerec.MenuMesaji();
@@ -385,19 +386,19 @@ namespace OkulYonetimUygulamasiG028
                 return;
             }
             Console.WriteLine();
-            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(10) + "Adı Soyadı".PadRight(20) + "Sehir".PadRight(15) +
-                    "Semt");
-            Console.WriteLine("".PadRight(70, '-'));
+            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(10) + "Adı Soyadı".PadRight(20) + "Sehir".PadRight(15) + "Semt".PadRight(14)+ "Mahalle");
+            Console.WriteLine("".PadRight(90, '-'));
 
             foreach (var item in liste)
             {
                 if (item.Adres.Il == null)
                 {
-                    item.Adres.Il = "boş";
-                    item.Adres.Ilce = "boş";
-                    item.Adres.Mahalle = "boş";
+                    Console.WriteLine("Listelenecek öğrenci yok.");
+                    return;
+
                 }
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) + item.Adres.Il.ToString().PadRight(10) + item.Adres.Ilce.PadRight(10));
+                string adSoyad = item.Ad + " " + item.Soyad;
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(9) + adSoyad.PadRight(20) + item.Adres.Il.ToString().PadRight(15) + item.Adres.Ilce.PadRight(15)+item.Adres.Mahalle);
             }
 
             AracGerec.MenuMesaji();

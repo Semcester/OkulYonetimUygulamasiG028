@@ -184,7 +184,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             return girdi.Substring(0, 1).ToUpper() + girdi.Substring(1).ToLower();
         }
 
-        static void HataMesaj()
+        static public void HataMesaj()
         {
             Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
         } // Her yere aynısını yazmak istemedim

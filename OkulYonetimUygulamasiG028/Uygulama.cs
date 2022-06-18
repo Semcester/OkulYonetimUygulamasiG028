@@ -254,7 +254,7 @@ namespace OkulYonetimUygulamasiG028
             Okul.AdresEkle(1, "Mersin", "Yenişehir", "Gül");
             Okul.AdresEkle(2, "Ankara", "Çankaya", "çıkmaz");
             Okul.AdresEkle(3, "İstanbul", "Kartal", "Gül");
-            Okul.AdresEkle(41, "Trabzon", "Uzun Burun", "Gül");
+            Okul.AdresEkle(41, "Trabzon", "Uzun ", "Yayla");
             Okul.AdresEkle(4, "Zonguldak", "Kömür", "Maden");
             Okul.AdresEkle(5, "Ankara", "Çinçin", "dikkat");
             Okul.AdresEkle(6, "İzmir", "Buca", "Sarmaşık");
