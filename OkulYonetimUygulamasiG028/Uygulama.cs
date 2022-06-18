@@ -239,6 +239,7 @@ namespace OkulYonetimUygulamasiG028
         public void SahteVeriGir()
         {
 
+
             Okul.OgrenciEkle(1, "Aydın", "Kaya", new DateTime(2009, 7, 9), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.C);
             Okul.OgrenciEkle(2, "Yunus", "Emre", new DateTime(1975, 8, 27), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
             Okul.OgrenciEkle(3, "Ayşe", "Fatma", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
@@ -250,6 +251,18 @@ namespace OkulYonetimUygulamasiG028
             Okul.OgrenciEkle(8, "Nadir", "Işık", new DateTime(2003, 2, 19), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
             Okul.OgrenciEkle(9, "Nadide", "Başak", new DateTime(1989, 3, 11), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.C);
             Okul.OgrenciEkle(10, "Bartu", "Özgün", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.B);
+            Okul.AdresEkle(1, "Mersin", "Yenişehir", "Gül");
+            Okul.AdresEkle(2, "Ankara", "Çankaya", "çıkmaz");
+            Okul.AdresEkle(3, "İstanbul", "Kartal", "Gül");
+            Okul.AdresEkle(41, "Trabzon", "Uzun Burun", "Gül");
+            Okul.AdresEkle(4, "Zonguldak", "Kömür", "Maden");
+            Okul.AdresEkle(5, "Ankara", "Çinçin", "dikkat");
+            Okul.AdresEkle(6, "İzmir", "Buca", "Sarmaşık");
+            Okul.AdresEkle(7, "İzmir", "Konak", "Atatürk");
+            Okul.AdresEkle(8, "İstanbuk", "Beydağı", "nilüfer");
+            Okul.AdresEkle(9, "Mersin", "Mezitli", "köy");
+            Okul.AdresEkle(10, "Hakkari", "Çatışma", "kurşun");
+
 
         }
 

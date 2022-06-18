@@ -155,17 +155,17 @@ namespace OkulYonetimUygulamasiG028
             if (sube == "A")
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).ToList();
-                OgrenciListele(liste);
+                
             }
             else if (sube == "B")
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).ToList();
-                OgrenciListele(liste);
+                
             }
             else if (sube == "C")
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).ToList();
-                OgrenciListele(liste);
+               
             }
             else
             {
