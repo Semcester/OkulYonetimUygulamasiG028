@@ -19,7 +19,7 @@ namespace OkulYonetimUygulamasiG028
             Menu();
             //SwitchCase
             SecimAl();
-
+            //gitinit
         }
         public void Menu() //Semih Senan 16.06.2022
         {
