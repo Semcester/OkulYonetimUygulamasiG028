@@ -314,10 +314,7 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("".PadRight(20, '-'));
                 for (int i = 0; i < o.Notlar.Count; i++)
                 {
-                    if (o.Notlar[i] != null)
-                    {
-
-                    }
+                    
                     Console.WriteLine(o.Notlar[i].DersAdi.PadRight(14) + o.Notlar[i].Not);
 
                 }

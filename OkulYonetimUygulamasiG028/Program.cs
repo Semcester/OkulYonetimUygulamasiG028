@@ -21,6 +21,8 @@ namespace OkulYonetimUygulamasiG028
    
         }
 
+        // not ortalaması 0 boş gelmemeli...
+
 
     }
 }
