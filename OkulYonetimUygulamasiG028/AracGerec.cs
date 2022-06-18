@@ -115,7 +115,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 catch (Exception e)
                 {
 
-                    Console.WriteLine(e.Message);
+                    throw new Exception("yazial metodu bozuldu");
                 }
 
             } while (true);

@@ -154,15 +154,18 @@ namespace OkulYonetimUygulamasiG028
             string sube = Console.ReadLine().ToUpper();
             if (sube == "A")
             {
-                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).Take(3).ToList();
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).ToList();
+                OgrenciListele(liste);
             }
             else if (sube == "B")
             {
-                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).Take(3).ToList();
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).ToList();
+                OgrenciListele(liste);
             }
             else if (sube == "C")
             {
-                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).Take(3).ToList();
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).ToList();
+                OgrenciListele(liste);
             }
             else
             {
@@ -246,17 +249,15 @@ namespace OkulYonetimUygulamasiG028
             }
 
 
-            else if (a == "5") //Semih Senan 17.06.2022 00:00
+            else if (a == "5") //Semih Senan 17.06.2022 00:00 İllere Göre Listele
             {
-                //İllere Göre Listele
-
-
+      
                 Console.WriteLine();
                 Console.WriteLine("5-Illere Göre Ögrencileri Listele" + "".PadRight(15, '-'));
                 Console.WriteLine();
-                string il = AracGerec.YaziAl("Listelemek istediğiniz il girin (Ankara): ");
 
-                liste = Ogrenciler.OrderBy(a => a.Adres.Il == il.ToUpper()).ToList(); //WHERE YAZIYORDU ORDERBY YAPTIM -MERTO
+
+                liste = Ogrenciler.OrderBy(a => a.Adres.Il).ToList(); //WHERE YAZIYORDU ORDERBY YAPTIM -MERTO
                 IllereGoreOgrenciListele(liste);
 
 
@@ -295,6 +296,39 @@ namespace OkulYonetimUygulamasiG028
 
         }
 
+        public void OgrenciAdresi() // SM 18.06.2022	
+        {
+            Adres a = new Adres();
+            Console.WriteLine();
+            Console.WriteLine("18-Ögrencinin adresini gir " + "".PadRight(20, '-'));
+        TEKRARNUMARASECIM:
+            int ogrenciNoGirdi = AracGerec.SayiAl("Öğrencinin numarası: ");
+            Ogrenci test = null;
+            foreach (Ogrenci item in Ogrenciler)
+            {
+                if (ogrenciNoGirdi == item.No)
+                {
+                    test = item;
+                }
+            }
+            if (test != null)
+            {
+                OgrenciAdiSubesi(ogrenciNoGirdi);
+            }
+            else
+            {
+                Console.WriteLine("Bu numarada bir öğrenci yok. Tekrar deneyin.");
+                goto TEKRARNUMARASECIM;
+            }
+            string il = AracGerec.YaziAl("İl: ");
+            string ilce = AracGerec.YaziAl("İlçe: ");
+            string mahalle = AracGerec.YaziAl("Mahalle: ");
+            AdresEkle(ogrenciNoGirdi, il, ilce, mahalle);
+            Console.WriteLine("");
+            Console.WriteLine("Bilgileri Sisteme Girilmiştir...");
+            Console.WriteLine("");
+        }
+
         public void OgrenciNotlariGoruntule()//6 METOT ÇALIŞIYOR FAKAT İLK ÖNCE EKLEME YAPILMASI GEREKİYOR
         {
 
@@ -309,13 +343,9 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("Ders Adı ".PadRight(14) + "Notu".PadRight(12));
                 Console.WriteLine("".PadRight(20, '-'));
                 for (int i = 0; i < o.Notlar.Count; i++)
-                {
-                    
+                { 
                     Console.WriteLine(o.Notlar[i].DersAdi.PadRight(14) + o.Notlar[i].Not);
-
                 }
-
-
             }
             else
             {
@@ -364,6 +394,12 @@ namespace OkulYonetimUygulamasiG028
 
             foreach (var item in liste)
             {
+                if (item.Adres.Il == null)
+                {
+                    item.Adres.Il = "boş";
+                    item.Adres.Ilce = "boş";
+                    item.Adres.Mahalle = "boş";
+                }
                 Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) + item.Adres.Il.ToString().PadRight(10) + item.Adres.Ilce.PadRight(10));
             }
 

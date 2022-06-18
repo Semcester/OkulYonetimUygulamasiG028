@@ -19,14 +19,14 @@ namespace OkulYonetimUygulamasiG028
 
         public DateTime DogumTarihi { get; set; }
 
-        public float Ortalama { get; }
-        //{
-        //    get
-        //    {
-        //        return this.Notlar.Average(x => x.Not);
-        //    }
+        public float Ortalama
+        {
+            get
+            {
+                return this.Notlar.Average(x => x.Not);
+            }
 
-        //}
+        }
 
         public Adres Adres = new Adres();
 

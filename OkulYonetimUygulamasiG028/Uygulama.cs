@@ -114,7 +114,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciSil();
                         break;
                     case "18":
-                        Console.WriteLine("Öğrencinin adresini gir");
+                        Okul.OgrenciAdresi();
                         break;
                     case "19":
                         Console.WriteLine("Öğrencinin okuduğu kitabı gir");
