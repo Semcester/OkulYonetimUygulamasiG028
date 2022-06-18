@@ -180,7 +180,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                     }
                     
                 }
-                return cikanMetin;
+                return cikanMetin.Trim();
             }
             return girdi.Substring(0, 1).ToUpper() + girdi.Substring(1).ToLower();
         }
