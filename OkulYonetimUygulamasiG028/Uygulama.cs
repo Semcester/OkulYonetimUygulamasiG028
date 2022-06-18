@@ -96,10 +96,10 @@ namespace OkulYonetimUygulamasiG028
                         Okul.EnDusukUcSube();
                         break;
                     case "12":
-                        Okul.OgrenciOrt();
+                        OgrenciOrt();
                         break;
                     case "13":
-                        Okul.SubeNotOrt();
+                        SubeNotOrt();
                         break;
                     case "14":
                         Okul.OgrenciListesiGetir("14");
@@ -134,80 +134,107 @@ namespace OkulYonetimUygulamasiG028
                         break;
                 }
             }
-        } 
-        
-        // Şubeye yanlış girilince yanlış girildi diyecek....
-        //cinsiyette sayı girilince hatalı giriş olacak....
-        //5. metot düzenlenicek.
-        //başharf metodu
-        //öğrenicinin notu yoksa notu yok yazacak listelemeyecek 6
-        // 8. metot ve ORTALAMA KONTROL
-        // 15. METOT düzenlenece
-        //not gir düzenlenecek
-        
-        public void NotGir() //Düzenlenmesi gerekli. Girilen numara ogrencilerde var mı kontrol lazım -Merto
-        {
-            
-            Console.WriteLine("20-Not Gir -----------------------------------------------");
-            
-            int no = AracGerec.SayiAl("Öğrencinin numarasını girin: ");  
-            
-            Okul.OgrenciAdiSubesi(no);
+        }
 
+        //1. ✓  Şubeye yanlış girilince yanlış girildi diyecek.... ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
+        //2  ✓  cinsiyette sayı girilince hatalı giriş olacak....  ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
+        //3.   5. metot düzenlenicek. ===Semih Senan'a aittir :D
+        //4.  ✓  başharf metodu ==>>>>>>>> < >>  > < < > > > > > >  <=Y ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
+        //5.  ✓  öğrenicinin notu yoksa notu yok yazacak listelemeyecek 6 ==== ✓✓✓✓✓✓✓✓✓✓
+        //6.     8. metot ve ORTALAMA KONTROL
+        //7.     15. METOT düzenlenecek numara verirken sorun var 
+        //8.    not gir düzenlenecek
+
+        public void NotGir()
+        {
+
+            Console.WriteLine("20-Not Gir -----------------------------------------------");
+
+            Ogrenci o = Okul.OgrenciNo();
+            Okul.OgrenciAdiSubesi(o.No);
             string ders = AracGerec.YaziAl("Not eklemek istediğiniz ders: ");
-            Console.Write("Eklemek istediğiniz not adedi: ");
-            int adet = int.Parse(Console.ReadLine());
-            for (int i = 1; i <= adet; i++)
+            int adet = AracGerec.SayiAl("Eklemek istediginiz not adedi: ");
+            int sayac = 0;
+            do
             {
-                Console.Write(i + ". Notu Girin: ");
-                
-                    int not = int.Parse(Console.ReadLine());
-                
-                Okul.NotEkle(no, ders, not);
-            }
-            //Console.WriteLine();
-            //Console.WriteLine("Bilgiler Sisteme Girilmiştir.");
-            //Console.WriteLine();
+                sayac++;
+               
+                int not = AracGerec.SayiAl(sayac+" Notu Giriniz: ");
+               
+                Okul.NotEkle(o.No, ders, not);
+
+            } while (sayac!=adet);
+            Console.WriteLine();
+            Console.WriteLine("Bilgiler Sisteme Girilmiştir.");
+            AracGerec.MenuMesaji();
+
+        }
+        public void OgrenciOrt()
+        {
+            Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " + "".PadRight(20, '-'));
+            Ogrenci ogrenci = Okul.OgrenciNo();
+
+            Console.WriteLine();
+            Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
+            Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
+            Console.WriteLine();
+
+            Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
+
 
         }
 
         public void OkunanKitaplar() // 13:20 EKŞ
         {
-            Console.WriteLine("7-Ögrencinin okudugu kitapları listele "+"".PadRight(20,'-'));
-            NO:
-            int no = AracGerec.SayiAl("Öğrencinin numarası: ");
-            Ogrenci ogrenci = null;
-
-            foreach (var item in Okul.Ogrenciler)
-            {
-                if (no == item.No)
-                {
-                    ogrenci = item;
-                }
-            }
-            if (ogrenci == null)
-            {
-                Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin."); goto NO;
-            }
-            Okul.OgrenciAdiSubesi(ogrenci.No);
-            
-            Console.WriteLine("Okuduğu Kitaplar");
-            Console.WriteLine("".PadRight(10,'-'));
+            Console.WriteLine("7-Ögrencinin okudugu kitapları listele " + "".PadRight(20, '-'));
+            Ogrenci o = Okul.OgrenciNo();
+            Okul.OgrenciAdiSubesi(o.No);
 
             List<string> kitaplar;
-            kitaplar = ogrenci.Kitaplar;
+            kitaplar = o.Kitaplar;
             if (kitaplar.Count == 0)
             {
                 Console.WriteLine("Öğrencinin okuduğu bir kitap yok.");
             }
-            foreach (var item in kitaplar)
+            else
             {
-                Console.WriteLine(item);
+                Console.WriteLine("Okuduğu Kitaplar");
+                Console.WriteLine("".PadRight(10, '-'));
+                foreach (var item in kitaplar)
+                {
+                    Console.WriteLine(item);
+                }
+
             }
+            AracGerec.MenuMesaji();
+
 
         }
+        public void SubeNotOrt()//13
+        {
+            Console.WriteLine("13-Şubenin Not Ortalamasını Gör " + "".PadRight(20, '-'));
+
+            Ogrenci.SUBE sube = AracGerec.SubeAl("Bir şube seçin (A/B/C): ");
+
+            if (sube == Ogrenci.SUBE.A)
+            {
+                double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A).Average(x => x.Ortalama);
+                Console.WriteLine("A şubesinin not ortalaması: " + ort);
+            }
+            else if (sube == Ogrenci.SUBE.B)
+            {
+                double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.B).Average(x => x.Ortalama);
+                Console.WriteLine("B şubesinin not ortalaması: " + ort);
+            }
+            else if (sube == Ogrenci.SUBE.C)
+            {
+                double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.C).Average(x => x.Ortalama);
+                Console.WriteLine("C şubesinin not ortalaması: " + ort);
+            }
 
 
+
+        }
 
         public void SahteVeriGir()
         {

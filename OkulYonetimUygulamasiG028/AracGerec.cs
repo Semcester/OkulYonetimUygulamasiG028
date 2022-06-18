@@ -10,12 +10,12 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
     class AracGerec
     {
 
-        static public Ogrenci.SUBE SubeAl(string mesaj)
+        static public Ogrenci.SUBE SubeAl(string mesaj)//şubeyi gir(a/b/c)
         {
         SUBE:
-            Console.Write(mesaj);
-            string secim = Console.ReadLine().ToUpper();
-            switch (secim)
+            string girdi = YaziAl(mesaj).ToUpper();
+
+            switch (girdi)
             {
 
                 case "A":
@@ -24,6 +24,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                     return Ogrenci.SUBE.B;
                 case "C":
                     return Ogrenci.SUBE.C;
+
                 default:
                     Console.WriteLine("Böyle bir şube yok tekrar deneyiniz.");
                     goto SUBE;
@@ -33,25 +34,41 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
         }
         static public bool SayiMi(string mesaj)//16 14 10 6 4 mert 
         {
-            foreach (char item in mesaj)
+            do
             {
-                if (char.IsNumber(item))
+                try
                 {
-                    return true;
+                    if (int.TryParse(mesaj, out int sayi))
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-            }
-            return false;
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                }
+            } while (true);
         }
-        static public bool HarfMi(string giris)
+        static public bool HarfMi(string giris)//213a
         {
-            foreach (char item in giris)
+            do
             {
-                if (!char.IsNumber(item))
+                try
                 {
-                    return true;
+                    if (!int.TryParse(giris, out int sayi))
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-            }
-            return false;
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                }
+            } while (true);
         }
         static public int SayiAl(string giris)
         {
@@ -85,7 +102,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 try
                 {
                     Console.Write(mesaj);
-                    string yazi = Console.ReadLine(); // "Kontrol" "Yazı" ile değiştirildi... Karışıklık olmaması için...
+                    string yazi = BasHarfBuyut(Console.ReadLine()); // "Kontrol" "Yazı" ile değiştirildi... Karışıklık olmaması için...
                     if (HarfMi(yazi))
                     {
 
@@ -98,7 +115,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 catch (Exception e)
                 {
 
-                    Console.WriteLine(e.Message);
+                    throw new Exception ("yazial metodu bozuldu");
                 }
 
             } while (true);
@@ -127,13 +144,12 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             } while (true);
         }
         //static public Ogrenci.SUBE SubeAl(string mesaj)
-        public static Ogrenci.CINSIYET CinsiyetAl(string mesaj)
+        public static Ogrenci.CINSIYET CinsiyetAl(string mesaj)//cinsiyeti giriniz(e/k)
         {
             while (true)
             {
 
-                Console.Write(mesaj);
-                string cins = Console.ReadLine().ToUpper();
+                string cins = YaziAl(mesaj).ToUpper();
                 switch (cins)
                 {
                     case "K":
@@ -149,11 +165,35 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             }
 
         }
+        public static string BasHarfBuyut(string girdi)//mert 
+        {
+            string[] dizi = girdi.Split(' ');
+            string cikanMetin = "";
+            if (dizi != null || dizi.Length > 0)
+            {
+                
+                for (int i = 0; i < dizi.Length; i++)// enes=0 mert=1 kiris2  deke3
+                {
+                    if (dizi[i] != "")
+                    {
+                        cikanMetin += dizi[i].Substring(0, 1).ToUpper() + dizi[i].Substring(1).ToLower() + " ";
+                    }
+                    
+                }
+                return cikanMetin;
+            }
+            return girdi.Substring(0, 1).ToUpper() + girdi.Substring(1).ToLower();
+        }
 
         static void HataMesaj()
         {
             Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
         } // Her yere aynısını yazmak istemedim
-
+        public static void MenuMesaji()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+            Console.WriteLine();
+        }
     }
 }
