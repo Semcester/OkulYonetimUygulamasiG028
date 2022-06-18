@@ -264,6 +264,7 @@ namespace OkulYonetimUygulamasiG028
             Okul.AdresEkle(10, "Hakkari", "Çatışma", "kurşun");
 
 
+
         }
 
     }

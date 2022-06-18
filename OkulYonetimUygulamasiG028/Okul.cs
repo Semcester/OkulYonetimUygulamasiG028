@@ -287,9 +287,7 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("Ögrencinin Okudugu Son Kitap ");
                 Console.WriteLine("".PadRight(30, '-'));
                 Console.WriteLine(og.Kitaplar[og.Kitaplar.Count - 1].ToString());
-                Console.WriteLine();
-                Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
-                Console.WriteLine();
+                AracGerec.MenuMesaji();
 
             }
             return liste;
@@ -376,8 +374,7 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) /*+ item.Ortalama.ToString().PadRight(10)*/);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+            AracGerec.MenuMesaji();
 
         }
         public void IllereGoreOgrenciListele(List<Ogrenci> liste)//18.06.2020 00:33:00 Semih Senan
@@ -403,8 +400,7 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) + item.Adres.Il.ToString().PadRight(10) + item.Adres.Ilce.PadRight(10));
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+            AracGerec.MenuMesaji();
 
         }
         public Ogrenci OgrenciNo()//enes kırış
@@ -525,9 +521,7 @@ namespace OkulYonetimUygulamasiG028
                 g.Sube = sube;
                 Console.WriteLine();
                 Console.WriteLine("Öğrenci Güncellendi");
-                Console.WriteLine();
-                Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
-                Console.WriteLine();
+                AracGerec.MenuMesaji();
             }
             else
             {
