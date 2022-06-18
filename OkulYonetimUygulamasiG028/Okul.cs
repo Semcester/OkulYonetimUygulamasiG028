@@ -157,21 +157,9 @@ namespace OkulYonetimUygulamasiG028
             DersNotu dn = new DersNotu(ders, not);
 
             o.Notlar.Add(dn);
-            YeniListele(no);
+           
         }
-        public void YeniListele(int numara)
-        {
-            Ogrenci o = this.Ogrenciler.Where(a => a.No == numara).FirstOrDefault();
-            for (int i = 0; i < o.Notlar.Count; i++)
-            {
-                Console.WriteLine("-------------------------------");
-                Console.WriteLine("YeniListele(int numara) ÇALIŞTI");
-                Console.WriteLine();
-                Console.WriteLine(o.Notlar[i].DersAdi+"  "+ o.Notlar[i].Not);
-            }
-
-
-        }
+        
         public void AdresEkle(int no, string il, string ilce, string mahalle)
         {
             //bu noya sahip bir öğrenci olduğundan ve verilerin doğruluğundan eminiz...
@@ -278,31 +266,30 @@ namespace OkulYonetimUygulamasiG028
             return liste;
 
         }
-        public void OgrenciNotlariGoruntule()//6
+       
+        public void OgrenciNotlariGoruntule()//6 METOT ÇALIŞIYOR FAKAT İLK ÖNCE EKLEME YAPILMASI GEREKİYOR
         {
 
-
-            Console.WriteLine("6-Ögrencinin notlarını görüntüle" + "".PadRight(15, '-'));
+            Console.WriteLine();
+            Console.WriteLine("6-Ögrencinin notlarını görüntüle" + "".PadRight(30, '-'));
             List<Ogrenci> liste = this.Ogrenciler;
             Ogrenci o = OgrenciNo();
             liste = Ogrenciler.Where(x => x.No == o.No).ToList();
             OgrenciAdiSubesi(o.No);
-            YazdirBi(liste);
+            Console.WriteLine("Ders Adı ".PadRight(14) + "Notu".PadRight(12));
+            Console.WriteLine("".PadRight(20, '-'));
+            for (int i = 0; i < o.Notlar.Count; i++)
+            {
 
+                Console.WriteLine(o.Notlar[i].DersAdi.PadRight(14)+ o.Notlar[i].Not);
 
+            }
 
-
+            Console.WriteLine();
+            Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+            Console.WriteLine();
         }
-        public void YazdirBi(List<Ogrenci> liste)
-        {
-            Console.WriteLine("Ders Adı".PadRight(18) + "Notu");
-            Console.WriteLine("".PadRight(25, '-'));
-            DersNotu a = new DersNotu("matematik", 15);
-
-            Console.WriteLine(a.DersAdi + "    " + a.Not);
-
-
-        }
+       
         public void OgrenciListele(List<Ogrenci> liste)//16.06.2020 15:30:00 Mert Anıl Deke , Enes Kırış
         {
             if (liste.Count == 0 || liste == null)
