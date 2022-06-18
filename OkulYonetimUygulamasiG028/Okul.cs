@@ -154,26 +154,22 @@ namespace OkulYonetimUygulamasiG028
             string sube = Console.ReadLine().ToUpper();
             if (sube == "A")
             {
-                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).ToList();
-                OgrenciListele(liste);
-
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).Take(3).ToList();
             }
             else if (sube == "B")
             {
-                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).ToList();
-                OgrenciListele(liste);
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).Take(3).ToList();
             }
             else if (sube == "C")
             {
-                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).ToList();
-                OgrenciListele(liste);
+                liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).Take(3).ToList();
             }
             else
             {
                 Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
                 goto SUBE;
             }
-
+            OgrenciListele(liste);
         }
 
 
