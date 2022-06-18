@@ -17,7 +17,6 @@ namespace OkulYonetimUygulamasiG028
 
             //doğukan test
 
-
             new Uygulama().Calistir();
    
         }

@@ -482,12 +482,7 @@ namespace OkulYonetimUygulamasiG028
             }
 
 
-
-
-
         }
-
-
 
         public void YeniOgrenci() // SM 16.06.2022
         {
