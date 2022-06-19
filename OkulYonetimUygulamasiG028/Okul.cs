@@ -504,7 +504,7 @@ namespace OkulYonetimUygulamasiG028
             Ogrenci ogr = OgrenciNo();
             OgrenciAdiSubesi(ogr.No);
             string kitap = AracGerec.BasHarfBuyut("Eklenecek Kitabın Adı: ");
-            ogr.Kitaplar.Add(kitap);
+            KitapGir(ogr.No, kitap);
 
             Console.WriteLine("Bilgiler sisteme girilmistir.");
 
@@ -512,22 +512,22 @@ namespace OkulYonetimUygulamasiG028
 
 
         }
-            public void YeniOgrenci() // SM 16.06.2022
-            {
-                Console.WriteLine("15-Öğrenci Ekle" + "".PadRight(15, '-'));
-                int ogrenciNo = NoKontrol(AracGerec.SayiAl("Öğrencinin numarası: "));
-                string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
-                string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
-                DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğum tarihi: ");
+        public void YeniOgrenci() // SM 16.06.2022
+        {
+            Console.WriteLine("15-Öğrenci Ekle" + "".PadRight(15, '-'));
+            int ogrenciNo = NoKontrol(AracGerec.SayiAl("Öğrencinin numarası: "));
+            string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
+            string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
+            DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğum tarihi: ");
 
-                Ogrenci.CINSIYET cins = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K)");
-                Ogrenci.SUBE sube = AracGerec.SubeAl("Öğrencinin Şubesi (A/B/C)");
-                Console.WriteLine();
-                OgrenciEkle(ogrenciNo, ogrenciAdi, ogrenciSoyadi, dogumTarihi, cins, sube);
-                //11 numaralı ögrenci sisteme basarılı bir sekilde eklenmistir.
-                Console.WriteLine(ogrenciNo + " Nolu Öğrenci sisteme basarılı bir sekilde eklenmistir. ");
-                AracGerec.MenuMesaji();
-            }
-
+            Ogrenci.CINSIYET cins = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K): ");
+            Ogrenci.SUBE sube = AracGerec.SubeAl("Öğrencinin Şubesi (A/B/C): ");
+            Console.WriteLine();
+            OgrenciEkle(ogrenciNo, ogrenciAdi, ogrenciSoyadi, dogumTarihi, cins, sube);
+            //11 numaralı ögrenci sisteme basarılı bir sekilde eklenmistir.
+            Console.WriteLine(ogrenciNo + " Nolu Öğrenci sisteme basarılı bir sekilde eklenmistir. ");
+            AracGerec.MenuMesaji();
         }
+
     }
+}
