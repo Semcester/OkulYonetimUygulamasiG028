@@ -158,12 +158,12 @@ namespace OkulYonetimUygulamasiG028
             do
             {
                 sayac++;
-               
-                int not = AracGerec.SayiAl(sayac+" Notu Giriniz: ");
-               
+
+                int not = AracGerec.SayiAl(sayac + " Notu Giriniz: ");
+
                 Okul.NotEkle(o.No, ders, not);
 
-            } while (sayac!=adet);
+            } while (sayac != adet);
             Console.WriteLine();
             Console.WriteLine("Bilgiler Sisteme Girilmiştir.");
             AracGerec.MenuMesaji();
@@ -173,21 +173,11 @@ namespace OkulYonetimUygulamasiG028
         {
             Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " + "".PadRight(20, '-'));
             Ogrenci ogrenci = Okul.OgrenciNo();
-            try
-            {
-                Console.WriteLine();
-                Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
-                Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
-                Console.WriteLine();
+            Okul.OgrenciAdiSubesi(ogrenci.No);
+            Console.WriteLine();
+            Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
+            AracGerec.MenuMesaji();
 
-                Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
-            }
-            catch
-            {
-                Console.WriteLine("Öğrencinin ortalaması hesaplanacak bir notu yok.");
-                AracGerec.MenuMesaji();
-            }
-            
         }
 
         public void OkunanKitaplar() // Test edildi sorunsuz çalışıyor.
