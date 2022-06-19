@@ -24,6 +24,7 @@ namespace OkulYonetimUygulamasiG028
             o.DogumTarihi = dogumtarihi;
             o.Cinsiyet = cinsiyet;
             o.Sube = sube;
+
             this.Ogrenciler.Add(o);
         }
         public void NotEkle(int no, string ders, int not)
@@ -47,6 +48,50 @@ namespace OkulYonetimUygulamasiG028
             o.Adres.Mahalle = mahalle;
 
         }
+
+        /*
+        public void OgrenciOrt() ////TAŞINDIK....
+        {
+            Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " + "".PadRight(20, '-'));
+            Ogrenci ogrenci = OgrenciNo();
+
+            Console.WriteLine();
+            Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
+            Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
+            Console.WriteLine();
+
+            Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
+
+
+        } */ //ORTALAMA AL TAŞINDI
+
+
+        /*
+        //public void SubeNotOrt()
+        //{
+        //    Console.WriteLine("13-Şubenin Not Ortalamasını Gör " + "".PadRight(20, '-'));
+
+        //    Ogrenci.SUBE sube = AracGerec.SubeAl("Bir şube seçin (A/B/C): ");
+
+        //    if (sube == Ogrenci.SUBE.A)
+        //    {
+        //        double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A).Average(x => x.Ortalama);
+        //        Console.WriteLine("A şubesinin not ortalaması: " + ort);
+        //    }
+        //    else if (sube == Ogrenci.SUBE.B)
+        //    {
+        //        double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.B).Average(x => x.Ortalama);
+        //        Console.WriteLine("B şubesinin not ortalaması: " + ort);
+        //    }
+        //    else if (sube == Ogrenci.SUBE.C)
+        //    {
+        //        double ort = this.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.C).Average(x => x.Ortalama);
+        //        Console.WriteLine("C şubesinin not ortalaması: " + ort);
+        //    }
+
+        */ //SUBE ORTALAMASI TAŞINDI
+
+
         public void EnYuksekNotluBesOgrenci() // Semih Senan 18.06.2022 00:40
         {
             Console.WriteLine();
@@ -110,17 +155,14 @@ namespace OkulYonetimUygulamasiG028
             if (sube == "A")
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).Take(3).ToList();
-
             }
             else if (sube == "B")
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).Take(3).ToList();
-
             }
             else if (sube == "C")
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).Take(3).ToList();
-
             }
             else
             {
@@ -138,7 +180,6 @@ namespace OkulYonetimUygulamasiG028
 
             if (a == "1")
             {
-
                 OgrenciListele(liste);
             }
             else if (a == "2")
@@ -151,18 +192,22 @@ namespace OkulYonetimUygulamasiG028
                 {
                     liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).ToList();
 
+                    OgrenciListele(liste);
+
                 }
                 else if (sube == Ogrenci.SUBE.B)
                 {
                     liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).ToList();
 
+                    OgrenciListele(liste);
                 }
                 else if (sube == Ogrenci.SUBE.C)
                 {
                     liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).ToList();
 
+                    OgrenciListele(liste);
                 }
-                OgrenciListele(liste);
+
             }
             else if (a == "3")
             {
@@ -173,20 +218,19 @@ namespace OkulYonetimUygulamasiG028
                 if (cinsiyet == "E")
                 {
                     liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Erkek).ToList();
-
+                    OgrenciListele(liste);
 
                 }
                 else if (cinsiyet == "K")
                 {
                     liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Kiz).ToList();
-
+                    OgrenciListele(liste);
                 }
                 else
                 {
                     Console.WriteLine("Böyle bir cinsiyet yok. Lütfen tekrar seçim yapınız.");
                     goto CINSIYET;
                 }
-                OgrenciListele(liste);
             }
 
             // Buraya 4. Seçenek Gelmeli
@@ -201,24 +245,26 @@ namespace OkulYonetimUygulamasiG028
 
             }
 
-            else if (a == "5") //Semih Senan 19.06.2022 01:55 İllere Göre Listele
+
+            else if (a == "5") //Semih Senan 17.06.2022 00:00
             {
+                //İllere Göre Listele
+
 
                 Console.WriteLine();
                 Console.WriteLine("5-Illere Göre Ögrencileri Listele" + "".PadRight(15, '-'));
                 Console.WriteLine();
-
-                liste = this.Ogrenciler.Where(a => a.Adres.Il != null).ToList();
+                liste = Ogrenciler.OrderBy(a => a.Adres.Il).ToList(); //WHERE YAZIYORDU ORDERBY YAPTIM -MERTO
                 IllereGoreOgrenciListele(liste);
 
 
             }
 
-            else if (a == "10") //Ortalama çözüldü -Merto
+            else if (a == "10") //Ortalama HATASI YÜZÜNDEN ADA GÖRE SIRALADIM X.AD DEĞİŞECEK 
             {
                 Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
                 Console.WriteLine();
-                liste = Ogrenciler.Where(x => x.Sube == sube).OrderByDescending(x => x.Ortalama).Take(5).ToList();
+                liste = Ogrenciler.Where(x => x.Sube == sube).OrderByDescending(x => x.Ad).Take(5).ToList();
                 OgrenciListele(liste);
             }
 
@@ -226,60 +272,25 @@ namespace OkulYonetimUygulamasiG028
             {
                 Console.WriteLine();
                 Console.WriteLine("14 - Ögrencinin okudugu son kitabı listele " + "".PadRight(15, '-'));
-                Ogrenci og = OgrenciNo();
-                if (og.Kitaplar.Count == 0)
+            OGRENCIGIR:
+                int no = AracGerec.SayiAl("Öğrencinin Numarası: ");
+                Ogrenci og = Ogrenciler.Where(x => x.No == no).FirstOrDefault();
+                if (og == null)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Listelenecek Kitap Yok.");
-
+                    Console.WriteLine("Bu numarada bir ögrenci yok.Tekrar deneyin.");
+                    goto OGRENCIGIR;
                 }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Ögrencinin Okudugu Son Kitap ");
-                    Console.WriteLine("".PadRight(30, '-'));
-                    Console.WriteLine(og.Kitaplar[og.Kitaplar.Count - 1].ToString());
-                }
-                
-                AracGerec.MenuMesaji();
+                Console.WriteLine();
+                Console.WriteLine("Ögrencinin Okudugu Son Kitap ");
+                Console.WriteLine("".PadRight(30, '-'));
+                Console.WriteLine(og.Kitaplar[og.Kitaplar.Count - 1].ToString());
+                Console.WriteLine();
+                Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+                Console.WriteLine();
 
             }
             return liste;
 
-        }
-
-        public void OgrenciAdresi() // SM 18.06.2022	
-        {
-            Adres a = new Adres();
-            Console.WriteLine();
-            Console.WriteLine("18-Ögrencinin adresini gir " + "".PadRight(20, '-'));
-        TEKRARNUMARASECIM:
-            int ogrenciNoGirdi = AracGerec.SayiAl("Öğrencinin numarası: ");
-            Ogrenci test = null;
-            foreach (Ogrenci item in Ogrenciler)
-            {
-                if (ogrenciNoGirdi == item.No)
-                {
-                    test = item;
-                }
-            }
-            if (test != null)
-            {
-                OgrenciAdiSubesi(ogrenciNoGirdi);
-            }
-            else
-            {
-                Console.WriteLine("Bu numarada bir öğrenci yok. Tekrar deneyin.");
-                goto TEKRARNUMARASECIM;
-            }
-            string il = AracGerec.YaziAl("İl: ");
-            string ilce = AracGerec.YaziAl("İlçe: ");
-            string mahalle = AracGerec.YaziAl("Mahalle: ");
-            AdresEkle(ogrenciNoGirdi, il, ilce, mahalle);
-            Console.WriteLine("");
-            Console.WriteLine("Bilgileri Sisteme Girilmiştir...");
-            Console.WriteLine("");
-            AracGerec.MenuMesaji();
         }
 
         public void OgrenciNotlariGoruntule()//6 METOT ÇALIŞIYOR FAKAT İLK ÖNCE EKLEME YAPILMASI GEREKİYOR
@@ -297,8 +308,12 @@ namespace OkulYonetimUygulamasiG028
                 Console.WriteLine("".PadRight(20, '-'));
                 for (int i = 0; i < o.Notlar.Count; i++)
                 {
+                    
                     Console.WriteLine(o.Notlar[i].DersAdi.PadRight(14) + o.Notlar[i].Not);
+
                 }
+
+
             }
             else
             {
@@ -320,47 +335,38 @@ namespace OkulYonetimUygulamasiG028
                 return;
             }
             Console.WriteLine();
-            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(12) + "Adı Soyadı".PadRight(20) + "Not Ort.".PadRight(16) + "Okudugu Kitap Say.");
-            Console.WriteLine("".PadRight(90, '-'));
+            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(12) + "Adı Soyadı".PadRight(14) + "Not Ort.".PadRight(10) +
+                    "Okudugu Kitap Say");
+            Console.WriteLine("".PadRight(70, '-'));
 
             foreach (var item in liste)
             {
-                string adSoyad = item.Ad + " " + item.Soyad;
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + adSoyad.PadRight(20) + Math.Round(item.Ortalama, 1).ToString().PadRight(20) + item.Kitaplar.Count());
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) /*+ item.Ortalama.ToString().PadRight(10)*/);
             }
 
-            AracGerec.MenuMesaji();
+            Console.WriteLine();
+            Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
 
         }
         public void IllereGoreOgrenciListele(List<Ogrenci> liste)//18.06.2020 00:33:00 Semih Senan
         {
-            if (liste.Count == 0)
+            if (liste.Count == 0 || liste == null)
             {
-                Console.WriteLine("Öğrenci adres bilgisi yok.");
-                Console.WriteLine();
+                Console.WriteLine("Listelenecek öğrenci yok.");
                 return;
             }
-            liste = liste.OrderBy(b => b.Adres.Il).ToList();
-
-
             Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(10) + "Adı Soyadı".PadRight(20) + "Sehir".PadRight(15) + "Semt".PadRight(14) + "Mahalle");
-            Console.WriteLine("".PadRight(90, '-'));
+            Console.WriteLine("Şube".PadRight(10) + "No".PadRight(10) + "Adı Soyadı".PadRight(20) + "Sehir".PadRight(15) +
+                    "Semt");
+            Console.WriteLine("".PadRight(70, '-'));
 
-
-            foreach (Ogrenci item in liste)
+            foreach (var item in liste)
             {
-                string adSoyad = item.Ad + " " + item.Soyad;
-
-
-                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(10) + adSoyad.PadRight(20) + item.Adres.Il.ToString().PadRight(15) + item.Adres.Ilce.PadRight(15) + item.Adres.Mahalle);
-
+                Console.WriteLine(item.Sube.ToString().PadRight(10) + item.No.ToString().PadRight(12) + item.Ad + " " + item.Soyad.PadRight(10) + item.Adres.Il.ToString().PadRight(10) + item.Adres.Ilce.PadRight(10));
             }
 
             Console.WriteLine();
-
-            AracGerec.MenuMesaji();
+            Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
 
         }
         public Ogrenci OgrenciNo()//enes kırış
@@ -481,56 +487,15 @@ namespace OkulYonetimUygulamasiG028
                 g.Sube = sube;
                 Console.WriteLine();
                 Console.WriteLine("Öğrenci Güncellendi");
-                AracGerec.MenuMesaji();
+                Console.WriteLine();
+                Console.WriteLine("Menüyü tekrar listelemek için “liste”, çıkış yapmak için “çıkış” yazın.");
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("Bu numaraya ait bir öğrenci yok Tekrar Deneyin."); goto TEKRAR;
             }
 
-
-        }
-        public void KitapGir()
-        {
-            Ogrenci ogr = new Ogrenci();
-            Console.WriteLine("19-Öğrencinin okuduğu kitabı gir" + "".PadRight(20, '-'));
-
-            while (true)
-            {
-
-                int no = AracGerec.SayiAl("Öğrencinin numarası: ");
-                OgrenciAdiSubesi(no);
-
-
-
-                foreach (Ogrenci item in Ogrenciler)
-                {
-                    if (no == item.No)
-                    {
-                        ogr = item;
-                    }
-
-                }
-
-                if (ogr != null)
-                {
-
-                    string kitap = AracGerec.BasHarfBuyut(AracGerec.YaziAl("Eklenecek Kitabın Adı: "));
-                    ogr.Kitaplar.Add(kitap);
-                    Console.WriteLine("Bilgiler sisteme girilmistir.");
-                    break;
-
-                }
-                else
-                {
-                    Console.WriteLine("Bu numarada bir öğrenci yok. Tekrar deneyin.");
-                    continue;
-
-                }
-
-
-            }
-            AracGerec.MenuMesaji();
 
         }
 
@@ -542,13 +507,61 @@ namespace OkulYonetimUygulamasiG028
             string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
             DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğun tarihi: ");
 
-            Ogrenci.CINSIYET cins = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K)");
-            Ogrenci.SUBE sube = AracGerec.SubeAl("Öğrencinin Şubesi (A/B/C)");
-            Console.WriteLine();
-            OgrenciEkle(ogrenciNo, ogrenciAdi, ogrenciSoyadi, dogumTarihi, cins, sube);
-            //11 numaralı ögrenci sisteme basarılı bir sekilde eklenmistir.
-            Console.WriteLine(ogrenciNo+ " Nolu Öğrenci sisteme basarılı bir sekilde eklenmistir. ");
-            AracGerec.MenuMesaji();
+            Ogrenci.CINSIYET cinsiyet;
+            Ogrenci.SUBE eklenecekSube;
+
+
+            Console.Write("Öğrencinin cinsiyeti (E/K)");
+
+            while (true)
+            {
+                string secim = Console.ReadLine().ToUpper();
+
+                if (secim == "E")
+                {
+                    cinsiyet = Ogrenci.CINSIYET.Erkek;
+                    break;
+                }
+                else if (secim == "K")
+                {
+                    cinsiyet = Ogrenci.CINSIYET.Kiz;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("E veya K olarak giriş yapın");
+                }
+
+            }
+
+            Console.Write("Öğrencinin Şubesi (A/B/C)");
+
+            while (true)
+            {
+                string sube = Console.ReadLine().ToUpper();
+
+                if (sube == "A")
+                {
+                    eklenecekSube = Ogrenci.SUBE.A;
+                    break;
+
+                }
+                else if (sube == "B")
+                {
+                    eklenecekSube = Ogrenci.SUBE.B;
+                    break;
+                }
+                else if (sube == "C")
+                {
+                    eklenecekSube = Ogrenci.SUBE.C;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("A,B veya C olarak giriş yapın.");
+                }
+            }
+            OgrenciEkle(ogrenciNo, ogrenciAdi, ogrenciSoyadi, dogumTarihi, cinsiyet, eklenecekSube);
         }
 
     }

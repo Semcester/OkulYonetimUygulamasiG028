@@ -114,7 +114,8 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message); 
+
+                    Console.WriteLine(e.Message);
                 }
 
             } while (true);
@@ -142,6 +143,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
             } while (true);
         }
+        //static public Ogrenci.SUBE SubeAl(string mesaj)
         public static Ogrenci.CINSIYET CinsiyetAl(string mesaj)//cinsiyeti giriniz(e/k)
         {
             while (true)
@@ -183,7 +185,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             return girdi.Substring(0, 1).ToUpper() + girdi.Substring(1).ToLower();
         }
 
-        static public void HataMesaj()
+        static void HataMesaj()
         {
             Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
         } // Her yere aynısını yazmak istemedim

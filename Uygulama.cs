@@ -19,7 +19,7 @@ namespace OkulYonetimUygulamasiG028
             Menu();
             //SwitchCase
             SecimAl();
-            //gitinit
+
         }
         public void Menu() //Semih Senan 16.06.2022
         {
@@ -114,10 +114,10 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciSil();
                         break;
                     case "18":
-                        Okul.OgrenciAdresi();
+                        
                         break;
                     case "19":
-                        Okul.KitapGir();
+                        Console.WriteLine("Öğrencinin okuduğu kitabı gir");
                         break;
                     case "20":
                         NotGir();
@@ -169,28 +169,22 @@ namespace OkulYonetimUygulamasiG028
             AracGerec.MenuMesaji();
 
         }
-        public void OgrenciOrt() //19.06.2022
+        public void OgrenciOrt()
         {
             Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " + "".PadRight(20, '-'));
             Ogrenci ogrenci = Okul.OgrenciNo();
-            try
-            {
-                Console.WriteLine();
-                Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
-                Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
-                Console.WriteLine();
 
-                Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
-            }
-            catch
-            {
-                Console.WriteLine("Öğrencinin ortalaması hesaplanacak bir notu yok.");
-                AracGerec.MenuMesaji();
-            }
-            
+            Console.WriteLine();
+            Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
+            Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
+            Console.WriteLine();
+
+            Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
+
+
         }
 
-        public void OkunanKitaplar() // Test edildi sorunsuz çalışıyor.
+        public void OkunanKitaplar() // 13:20 EKŞ
         {
             Console.WriteLine("7-Ögrencinin okudugu kitapları listele " + "".PadRight(20, '-'));
             Ogrenci o = Okul.OgrenciNo();
@@ -224,41 +218,18 @@ namespace OkulYonetimUygulamasiG028
 
             if (sube == Ogrenci.SUBE.A)
             {
-                //double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A && x.Ortalama != -1).Average(x => x.Ortalama); ***
-                try
-                {
-                    double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A && x.Ortalama != -1).Average(x => x.Ortalama);
-                    Console.WriteLine("{0} şubesinin not ortalaması: {1}", sube, ort);
-                }
-                catch
-                {
-                    Console.WriteLine("Sınıfta not ortalaması girilen öğrenci olmadığı için şube ortalaması hesaplanamadı.");
-                }
-
+                double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A).Average(x => x.Ortalama);
+                Console.WriteLine("A şubesinin not ortalaması: " + ort);
             }
             else if (sube == Ogrenci.SUBE.B)
             {
-                try
-                {
-                    double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A && x.Ortalama != -1).Average(x => x.Ortalama);
-                    Console.WriteLine("{0} şubesinin not ortalaması: {1}", sube, ort);
-                }
-                catch
-                {
-                    Console.WriteLine("Sınıfta not ortalaması girilen öğrenci olmadığı için şube ortalaması hesaplanamadı.");
-                }
+                double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.B).Average(x => x.Ortalama);
+                Console.WriteLine("B şubesinin not ortalaması: " + ort);
             }
             else if (sube == Ogrenci.SUBE.C)
             {
-                try
-                {
-                    double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.A && x.Ortalama != -1).Average(x => x.Ortalama);
-                    Console.WriteLine("{0} şubesinin not ortalaması: {1}", sube, ort);
-                }
-                catch
-                {
-                    Console.WriteLine("Sınıfta not ortalaması girilen öğrenci olmadığı için şube ortalaması hesaplanamadı.");
-                }
+                double ort = Okul.Ogrenciler.Where(x => x.Sube == Ogrenci.SUBE.C).Average(x => x.Ortalama);
+                Console.WriteLine("C şubesinin not ortalaması: " + ort);
             }
 
 
@@ -267,7 +238,6 @@ namespace OkulYonetimUygulamasiG028
 
         public void SahteVeriGir()
         {
-
 
             Okul.OgrenciEkle(1, "Aydın", "Kaya", new DateTime(2009, 7, 9), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.C);
             Okul.OgrenciEkle(2, "Yunus", "Emre", new DateTime(1975, 8, 27), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
@@ -283,7 +253,7 @@ namespace OkulYonetimUygulamasiG028
             Okul.AdresEkle(1, "Mersin", "Yenişehir", "Gül");
             Okul.AdresEkle(2, "Ankara", "Çankaya", "çıkmaz");
             Okul.AdresEkle(3, "İstanbul", "Kartal", "Gül");
-            Okul.AdresEkle(41, "Trabzon", "Uzun ", "Yayla");
+            Okul.AdresEkle(41, "Trabzon", "Uzun Burun", "Gül");
             Okul.AdresEkle(4, "Zonguldak", "Kömür", "Maden");
             Okul.AdresEkle(5, "Ankara", "Çinçin", "dikkat");
             Okul.AdresEkle(6, "İzmir", "Buca", "Sarmaşık");
@@ -291,27 +261,6 @@ namespace OkulYonetimUygulamasiG028
             Okul.AdresEkle(8, "İstanbuk", "Beydağı", "nilüfer");
             Okul.AdresEkle(9, "Mersin", "Mezitli", "köy");
             Okul.AdresEkle(10, "Hakkari", "Çatışma", "kurşun");
-            Okul.NotEkle(1, "matematik", 30);
-            Okul.NotEkle(1, "fen", 20);
-            Okul.NotEkle(1, "türkçe", 10);
-            Okul.NotEkle(1, "matematik", 30);
-            Okul.NotEkle(1, "fen", 20);
-            Okul.NotEkle(2, "türkçe", 10);
-            Okul.NotEkle(2, "matematik", 30);
-            Okul.NotEkle(2, "fen", 20);
-            Okul.NotEkle(2, "türkçe", 10);
-            Okul.NotEkle(1, "matematik", 30);
-            Okul.NotEkle(2, "fen", 20);
-            Okul.NotEkle(3, "türkçe", 10);
-            Okul.NotEkle(41, "din", 60);
-            Okul.NotEkle(4, "felsefe", 70);
-            Okul.NotEkle(5, "Kültür", 90);
-            Okul.NotEkle(6, "Geometri", 50);
-            Okul.NotEkle(7, "Sosyal", 30);
-            Okul.NotEkle(8, "Fen", 90);
-            Okul.NotEkle(9, "Türkçe", 100);
-            Okul.NotEkle(10, "matematik", 10);
-
 
 
         }

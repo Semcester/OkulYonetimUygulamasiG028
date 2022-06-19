@@ -19,23 +19,18 @@ namespace OkulYonetimUygulamasiG028
 
         public DateTime DogumTarihi { get; set; }
 
-        public float Ortalama
-        {
-            get
-            {
-                if (Notlar.Count >= 1)
-                {
-                return this.Notlar.Average(x => x.Not);
-                   
-                }
-                return 0;
-            }
+        public float Ortalama { get; }
+        //{
+        //    get
+        //    {
+        //        return this.Notlar.Average(x => x.Not);
+        //    }
 
-        }
+        //}
 
         public Adres Adres = new Adres();
 
-        public List<string> Kitaplar = new List<string>();
+        public List<string> Kitaplar = new List<string>() { "George Orwell- 1984","Ali Okulda","Büyük Kurtuluş","Bülbülü Öldürmek","Ince Mehmet" };
 
         public List<DersNotu> Notlar = new List<DersNotu>();
         
