@@ -240,7 +240,7 @@ namespace OkulYonetimUygulamasiG028
                     Console.WriteLine("".PadRight(30, '-'));
                     Console.WriteLine(og.Kitaplar[og.Kitaplar.Count - 1].ToString());
                 }
-                
+
                 AracGerec.MenuMesaji();
 
             }
@@ -490,66 +490,44 @@ namespace OkulYonetimUygulamasiG028
 
 
         }
+        public void KitapGir(int no, string kitapAdi)
+        {
+            Ogrenci o = this.Ogrenciler.Where(x => x.No == no).FirstOrDefault();
+
+            o.Kitaplar.Add(kitapAdi);
+
+        }
         public void KitapGir()
         {
-            Ogrenci ogr = new Ogrenci();
+
             Console.WriteLine("19-Öğrencinin okuduğu kitabı gir" + "".PadRight(20, '-'));
+            Ogrenci ogr = OgrenciNo();
+            OgrenciAdiSubesi(ogr.No);
+            string kitap = AracGerec.BasHarfBuyut("Eklenecek Kitabın Adı: ");
+            ogr.Kitaplar.Add(kitap);
 
-            while (true)
+            Console.WriteLine("Bilgiler sisteme girilmistir.");
+
+            AracGerec.MenuMesaji();
+
+
+        }
+            public void YeniOgrenci() // SM 16.06.2022
             {
+                Console.WriteLine("15-Öğrenci Ekle" + "".PadRight(15, '-'));
+                int ogrenciNo = NoKontrol(AracGerec.SayiAl("Öğrencinin numarası: "));
+                string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
+                string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
+                DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğum tarihi: ");
 
-                int no = AracGerec.SayiAl("Öğrencinin numarası: ");
-                OgrenciAdiSubesi(no);
-
-
-
-                foreach (Ogrenci item in Ogrenciler)
-                {
-                    if (no == item.No)
-                    {
-                        ogr = item;
-                    }
-
-                }
-
-                if (ogr != null)
-                {
-
-                    string kitap = AracGerec.BasHarfBuyut(AracGerec.YaziAl("Eklenecek Kitabın Adı: "));
-                    ogr.Kitaplar.Add(kitap);
-                    Console.WriteLine("Bilgiler sisteme girilmistir.");
-                    break;
-
-                }
-                else
-                {
-                    Console.WriteLine("Bu numarada bir öğrenci yok. Tekrar deneyin.");
-                    continue;
-
-                }
-
-
+                Ogrenci.CINSIYET cins = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K)");
+                Ogrenci.SUBE sube = AracGerec.SubeAl("Öğrencinin Şubesi (A/B/C)");
+                Console.WriteLine();
+                OgrenciEkle(ogrenciNo, ogrenciAdi, ogrenciSoyadi, dogumTarihi, cins, sube);
+                //11 numaralı ögrenci sisteme basarılı bir sekilde eklenmistir.
+                Console.WriteLine(ogrenciNo + " Nolu Öğrenci sisteme basarılı bir sekilde eklenmistir. ");
+                AracGerec.MenuMesaji();
             }
-            AracGerec.MenuMesaji();
 
         }
-
-        public void YeniOgrenci() // SM 16.06.2022
-        {
-            Console.WriteLine("15-Öğrenci Ekle" + "".PadRight(15, '-'));
-            int ogrenciNo = NoKontrol(AracGerec.SayiAl("Öğrencinin numarası: "));
-            string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
-            string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
-            DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğun tarihi: ");
-
-            Ogrenci.CINSIYET cins = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K)");
-            Ogrenci.SUBE sube = AracGerec.SubeAl("Öğrencinin Şubesi (A/B/C)");
-            Console.WriteLine();
-            OgrenciEkle(ogrenciNo, ogrenciAdi, ogrenciSoyadi, dogumTarihi, cins, sube);
-            //11 numaralı ögrenci sisteme basarılı bir sekilde eklenmistir.
-            Console.WriteLine(ogrenciNo+ " Nolu Öğrenci sisteme basarılı bir sekilde eklenmistir. ");
-            AracGerec.MenuMesaji();
-        }
-
     }
-}

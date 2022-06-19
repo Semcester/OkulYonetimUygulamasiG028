@@ -301,6 +301,29 @@ namespace OkulYonetimUygulamasiG028
             Okul.NotEkle(8, "Fen", 90);
             Okul.NotEkle(9, "Türkçe", 100);
             Okul.NotEkle(10, "matematik", 10);
+            Okul.KitapGir(1, "Bülbülü Öldürmek");
+            Okul.KitapGir(4, "George Orwell- 1984");
+            Okul.KitapGir(5, "Ali Okulda ");
+            Okul.KitapGir(6, "Jane Eyre");
+            Okul.KitapGir(7, "Babalar");
+            Okul.KitapGir(8, "Küçük Prens");
+            Okul.KitapGir(9, "Beyaz Diş");
+            Okul.KitapGir(10, "Bülbülü Öldürmek");
+            Okul.KitapGir(1, "George Orwell- 1984");
+            Okul.KitapGir(1, "Robinson Crusoe ");
+            Okul.KitapGir(2, "Hayvan Çiftliği");
+            Okul.KitapGir(6, "Beyaz Diş");
+            Okul.KitapGir(7, "Küçük Prens");
+            Okul.KitapGir(8, "Beyaz Diş");
+            Okul.KitapGir(9, "Sefiler");
+            Okul.KitapGir(2, "George Orwell- 1984");
+            Okul.KitapGir(10, "Kumarbaz");
+            Okul.KitapGir(2, "Anna Karenina");
+            Okul.KitapGir(9, "Beyaz Geceler");
+            Okul.KitapGir(7, "Seksen Gün");
+            Okul.KitapGir(4, "Suç ve Ceza");
+            Okul.KitapGir(1, "Ali Okulda ");
+
 
 
 
