@@ -169,22 +169,28 @@ namespace OkulYonetimUygulamasiG028
             AracGerec.MenuMesaji();
 
         }
-        public void OgrenciOrt()
+        public void OgrenciOrt() //19.06.2022
         {
             Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " + "".PadRight(20, '-'));
             Ogrenci ogrenci = Okul.OgrenciNo();
+            try
+            {
+                Console.WriteLine();
+                Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
+                Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
+                Console.WriteLine();
 
-            Console.WriteLine();
-            Console.WriteLine("Öğrencinin Adı Soyadı :" + ogrenci.Ad + " " + ogrenci.Soyad);
-            Console.WriteLine("Öğrencinin Şubesi: " + ogrenci.Sube);
-            Console.WriteLine();
-
-            Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
-
-
+                Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
+            }
+            catch
+            {
+                Console.WriteLine("Öğrencinin ortalaması hesaplanacak bir notu yok.");
+                AracGerec.MenuMesaji();
+            }
+            
         }
 
-        public void OkunanKitaplar() // 13:20 EKŞ
+        public void OkunanKitaplar() // Test edildi sorunsuz çalışıyor.
         {
             Console.WriteLine("7-Ögrencinin okudugu kitapları listele " + "".PadRight(20, '-'));
             Ogrenci o = Okul.OgrenciNo();
