@@ -99,25 +99,25 @@ namespace OkulYonetimUygulamasiG028
 
 
         }
-        public void EnDusukUcSube() // SM 11 numaralı başlık-17.06.2022
+        public void EnDusukUcSube() // SM 11 numaralı başlık-17.06.2022  ---------- String olarak alınan şube, şube al metotu ile değiştirldi.
         {
             List<Ogrenci> liste = this.Ogrenciler;
 
             Console.WriteLine("3-Şubedeki en başarısız 3 öğrenciyi listele" + "".PadRight(15, '-'));
         SUBE:
-            Console.Write("Listelemek istediğiniz şubeyi girin (A/B/C): ");
-            string sube = Console.ReadLine().ToUpper();
-            if (sube == "A")
+
+            Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
+            if (sube == Ogrenci.SUBE.A)
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(a => a.Ortalama).Take(3).ToList();
 
             }
-            else if (sube == "B")
+            else if (sube == Ogrenci.SUBE.B)
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(a => a.Ortalama).Take(3).ToList();
 
             }
-            else if (sube == "C")
+            else if (sube == Ogrenci.SUBE.C)
             {
                 liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(a => a.Ortalama).Take(3).ToList();
 

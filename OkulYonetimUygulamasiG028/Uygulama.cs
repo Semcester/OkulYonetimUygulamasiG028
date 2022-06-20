@@ -250,7 +250,7 @@ namespace OkulYonetimUygulamasiG028
                     Console.WriteLine("Sınıfta not ortalaması girilen öğrenci olmadığı için şube ortalaması hesaplanamadı.");
                 }
             }
-
+            AracGerec.MenuMesaji(); //Mesaj eksikti..
 
 
         }
