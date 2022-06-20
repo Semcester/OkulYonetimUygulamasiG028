@@ -117,7 +117,7 @@ namespace OkulYonetimUygulamasiG028
                         Okul.OgrenciAdresi();
                         break;
                     case "19":
-                        Okul.KitapGir();
+                        Okul.KitapEkle();
                         break;
                     case "20":
                         NotGir();
@@ -126,6 +126,9 @@ namespace OkulYonetimUygulamasiG028
                         Menu();
                         break;
                     case "çıkış":
+                    case "çikiş":                  
+                    case "ÇIKIŞ":
+                    case "ÇİKİŞ":
                         Console.WriteLine("Uygulamadan çıktınız...");
                         Environment.Exit(0);
                         break;

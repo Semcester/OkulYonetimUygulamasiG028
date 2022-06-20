@@ -497,17 +497,19 @@ namespace OkulYonetimUygulamasiG028
             o.Kitaplar.Add(kitapAdi);
 
         }
-        public void KitapGir()
+        public void KitapEkle()
         {
-
+            Console.WriteLine();
             Console.WriteLine("19-Öğrencinin okuduğu kitabı gir" + "".PadRight(20, '-'));
             Ogrenci ogr = OgrenciNo();
             OgrenciAdiSubesi(ogr.No);
-            string kitap = AracGerec.BasHarfBuyut("Eklenecek Kitabın Adı: ");
+
+            string kitap = AracGerec.YaziAl("Eklenecek Kitabın Adı: ");
+
             KitapGir(ogr.No, kitap);
-
+            Console.WriteLine();
             Console.WriteLine("Bilgiler sisteme girilmistir.");
-
+            
             AracGerec.MenuMesaji();
 
 
