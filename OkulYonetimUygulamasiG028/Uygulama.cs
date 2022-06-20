@@ -58,7 +58,7 @@ namespace OkulYonetimUygulamasiG028
             while (true)
             {
                 Console.Write("Yapmak istediğiniz işlemi seçiniz: ");
-                string secim = Console.ReadLine();
+                string secim = Console.ReadLine().Trim().ToLower();
 
                 switch (secim)
                 {
@@ -124,11 +124,9 @@ namespace OkulYonetimUygulamasiG028
                         break;
                     case "liste":
                         Menu();
-                        break;
-                    case "çıkış":
-                    case "çikiş":                  
-                    case "ÇIKIŞ":
-                    case "ÇİKİŞ":
+                        break;                                    
+                    case "çikiş":
+                    case "çikis":
                         Console.WriteLine("Uygulamadan çıktınız...");
                         Environment.Exit(0);
                         break;
@@ -139,15 +137,6 @@ namespace OkulYonetimUygulamasiG028
             }
         }
 
-        //1. ✓  Şubeye yanlış girilince yanlış girildi diyecek.... ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
-        //2  ✓  cinsiyette sayı girilince hatalı giriş olacak....  ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
-        //3.   5. metot düzenlenicek. ===Semih Senan'a aittir :D
-        //4.  ✓  başharf metodu ==>>>>>>>> < >>  > < < > > > > > >  <=Y ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
-        //5.  ✓  öğrenicinin notu yoksa notu yok yazacak listelemeyecek 6 ==== ✓✓✓✓✓✓✓✓✓✓
-        //6.     8. metot ve ORTALAMA KONTROL
-        //7.     15. METOT düzenlenecek numara verirken sorun var 
-        //8.    not gir düzenlenecek
-
         public void NotGir()
         {
 
@@ -155,7 +144,7 @@ namespace OkulYonetimUygulamasiG028
 
             Ogrenci o = Okul.OgrenciNo();
             Okul.OgrenciAdiSubesi(o.No);
-            string ders = AracGerec.YaziAl("Not eklemek istediğiniz ders: ");
+            string ders = AracGerec.BasHarfBuyut((AracGerec.YaziAl("Not eklemek istediğiniz ders: ")));
             int adet = AracGerec.SayiAl("Eklemek istediginiz not adedi: ");
             int sayac = 0;
             do
@@ -174,10 +163,12 @@ namespace OkulYonetimUygulamasiG028
         }
         public void OgrenciOrt() //19.06.2022
         {
+            Console.WriteLine();
             Console.WriteLine("12-Ögrencinin Not Ortalamasını Gör " + "".PadRight(20, '-'));
+            Console.WriteLine();
             Ogrenci ogrenci = Okul.OgrenciNo();
             Okul.OgrenciAdiSubesi(ogrenci.No);
-            Console.WriteLine();
+            
             Console.WriteLine("Öğrencini not ortalaması : " + ogrenci.Ortalama);
             AracGerec.MenuMesaji();
 
@@ -203,7 +194,6 @@ namespace OkulYonetimUygulamasiG028
                 {
                     Console.WriteLine(item);
                 }
-
             }
             AracGerec.MenuMesaji();
 
@@ -211,9 +201,11 @@ namespace OkulYonetimUygulamasiG028
         }
         public void SubeNotOrt()//13
         {
+            Console.WriteLine();
             Console.WriteLine("13-Şubenin Not Ortalamasını Gör " + "".PadRight(20, '-'));
 
             Ogrenci.SUBE sube = AracGerec.SubeAl("Bir şube seçin (A/B/C): ");
+            Console.WriteLine();
 
             if (sube == Ogrenci.SUBE.A)
             {
@@ -260,8 +252,6 @@ namespace OkulYonetimUygulamasiG028
 
         public void SahteVeriGir()
         {
-
-
             Okul.OgrenciEkle(1, "Aydın", "Kaya", new DateTime(2009, 7, 9), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.C);
             Okul.OgrenciEkle(2, "Yunus", "Emre", new DateTime(1975, 8, 27), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.A);
             Okul.OgrenciEkle(3, "Ayşe", "Fatma", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.B);
@@ -274,36 +264,36 @@ namespace OkulYonetimUygulamasiG028
             Okul.OgrenciEkle(9, "Nadide", "Başak", new DateTime(1989, 3, 11), Ogrenci.CINSIYET.Kiz, Ogrenci.SUBE.C);
             Okul.OgrenciEkle(10, "Bartu", "Özgün", new DateTime(2008, 4, 4), Ogrenci.CINSIYET.Erkek, Ogrenci.SUBE.B);
             Okul.AdresEkle(1, "Mersin", "Yenişehir", "Gül");
-            Okul.AdresEkle(2, "Ankara", "Çankaya", "çıkmaz");
+            Okul.AdresEkle(2, "Ankara", "Çankaya", "Çıkmaz");
             Okul.AdresEkle(3, "İstanbul", "Kartal", "Gül");
             Okul.AdresEkle(41, "Trabzon", "Uzun ", "Yayla");
             Okul.AdresEkle(4, "Zonguldak", "Kömür", "Maden");
-            Okul.AdresEkle(5, "Ankara", "Çinçin", "dikkat");
+            Okul.AdresEkle(5, "Ankara", "Çinçin", "Dikkat");
             Okul.AdresEkle(6, "İzmir", "Buca", "Sarmaşık");
             Okul.AdresEkle(7, "İzmir", "Konak", "Atatürk");
-            Okul.AdresEkle(8, "İstanbuk", "Beydağı", "nilüfer");
-            Okul.AdresEkle(9, "Mersin", "Mezitli", "köy");
-            Okul.AdresEkle(10, "Hakkari", "Çatışma", "kurşun");
-            Okul.NotEkle(1, "matematik", 30);
-            Okul.NotEkle(1, "fen", 20);
-            Okul.NotEkle(1, "türkçe", 10);
-            Okul.NotEkle(1, "matematik", 30);
-            Okul.NotEkle(1, "fen", 20);
-            Okul.NotEkle(2, "türkçe", 10);
-            Okul.NotEkle(2, "matematik", 30);
-            Okul.NotEkle(2, "fen", 20);
-            Okul.NotEkle(2, "türkçe", 10);
-            Okul.NotEkle(1, "matematik", 30);
-            Okul.NotEkle(2, "fen", 20);
-            Okul.NotEkle(3, "türkçe", 10);
-            Okul.NotEkle(41, "din", 60);
-            Okul.NotEkle(4, "felsefe", 70);
+            Okul.AdresEkle(8, "İstanbuk", "Beydağı", "Nilüfer");
+            Okul.AdresEkle(9, "Mersin", "Mezitli", "Köy");
+            Okul.AdresEkle(10, "Hakkari", "Çatışma", "Kurşun");
+            Okul.NotEkle(1, "Matematik", 30);
+            Okul.NotEkle(1, "Fen", 20);
+            Okul.NotEkle(1, "Türkçe", 10);
+            Okul.NotEkle(1, "Matematik", 30);
+            Okul.NotEkle(1, "Fen", 20);
+            Okul.NotEkle(2, "Türkçe", 10);
+            Okul.NotEkle(2, "Matematik", 30);
+            Okul.NotEkle(2, "Fen", 20);
+            Okul.NotEkle(2, "Türkçe", 10);
+            Okul.NotEkle(1, "Matematik", 30);
+            Okul.NotEkle(2, "Fen", 20);
+            Okul.NotEkle(3, "Türkçe", 10);
+            Okul.NotEkle(41, "Din", 60);
+            Okul.NotEkle(4, "Felsefe", 70);
             Okul.NotEkle(5, "Kültür", 90);
             Okul.NotEkle(6, "Geometri", 50);
             Okul.NotEkle(7, "Sosyal", 30);
             Okul.NotEkle(8, "Fen", 90);
             Okul.NotEkle(9, "Türkçe", 100);
-            Okul.NotEkle(10, "matematik", 10);
+            Okul.NotEkle(10, "Matematik", 10);
             Okul.KitapGir(1, "Bülbülü Öldürmek");
             Okul.KitapGir(4, "George Orwell- 1984");
             Okul.KitapGir(5, "Ali Okulda ");
@@ -326,9 +316,6 @@ namespace OkulYonetimUygulamasiG028
             Okul.KitapGir(7, "Seksen Gün");
             Okul.KitapGir(4, "Suç ve Ceza");
             Okul.KitapGir(1, "Ali Okulda ");
-
-
-
 
         }
 

@@ -32,32 +32,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             }
 
         }
-        static public Ogrenci.SUBE SubeGuncelle(string mesaj, Ogrenci ogrenci)//şubeyi gir(a/b/c)
-        {
-        SUBE:
-            string girdi = YaziAl(mesaj).ToUpper();
-            if( girdi == "")
-            {
-                return ogrenci.Sube;
-            }
-
-            switch (girdi)
-            {
-
-                case "A":
-                    return Ogrenci.SUBE.A;
-                case "B":
-                    return Ogrenci.SUBE.B;
-                case "C":
-                    return Ogrenci.SUBE.C;
-
-                default:
-                    Console.WriteLine("Böyle bir şube yok tekrar deneyiniz.");
-                    goto SUBE;
-
-            }
-
-        }
+        
         static public bool SayiMi(string mesaj)//16 14 10 6 4 mert 
         {
             do
@@ -111,7 +86,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                         int.TryParse(kontrol, out int sayi);
                         return sayi;
                     }
-                    HataMesaj();
+                    HataMesaj("Girdiğiniz bir sayı değildir");
                 }
                 catch (Exception e)
                 {
@@ -123,19 +98,27 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
         }
         static public string YaziAl(string mesaj)
         {
+            
             do
             {
                 try
                 {
                     Console.Write(mesaj);
-                    string yazi = BasHarfBuyut(Console.ReadLine()); // "Kontrol" "Yazı" ile değiştirildi... Karışıklık olmaması için...
+                    string yazi = Console.ReadLine(); // "Kontrol" "Yazı" ile değiştirildi... Karışıklık olmaması için...
+
+                    if(yazi == "")
+                    {
+                        HataMesaj("Boş yazı girişi yapamazsınız.");
+                        continue;
+                    }
+
                     if (HarfMi(yazi))
                     {
 
                         return yazi;
 
                     }
-                    HataMesaj();
+                    HataMesaj("Yanlış yazı girdiniz.");
 
                 }
                 catch (Exception e)
@@ -145,6 +128,48 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
             } while (true);
         }
+        static public DateTime TarihAl(string mesaj)
+        {
+            do
+            {
+                try
+                {
+                    Console.Write(mesaj);
+                    string dogum = Console.ReadLine();
+                    if (DateTime.TryParse(dogum, out DateTime dogumTarihi))
+                    {
+                        return dogumTarihi;
+                    }
+                    HataMesaj("Boş ya da yanlış tarih girişi yaptınız.");
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                }
+
+            } while (true);
+        }
+        public static Ogrenci.CINSIYET CinsiyetAl(string mesaj)//cinsiyeti giriniz(e/k)
+        {
+            while (true)
+            {
+
+                string cins = YaziAl(mesaj).ToUpper();
+                switch (cins)
+                {
+                    case "K":
+                        return Ogrenci.CINSIYET.Erkek;
+                    case "E":
+                        return Ogrenci.CINSIYET.Kiz;
+                    default:
+                        HataMesaj("Böyle bir cinysiyet yok.");
+                        break;
+                }
+            }
+        }
+     
         static public string AdGuncelle(string mesaj, Ogrenci ogrenci)
         {
             do
@@ -164,7 +189,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                         return yazi;
 
                     }
-                    HataMesaj();
+                    HataMesaj("Böyle bir yazı giremezsiniz.");
 
                 }
                 catch (Exception e)
@@ -193,7 +218,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                         return yazi;
 
                     }
-                    HataMesaj();
+                    HataMesaj("Böyle bir yazı giremezsiniz.");
 
                 }
                 catch (Exception e)
@@ -203,28 +228,31 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
             } while (true);
         }
-        static public DateTime TarihAl(string mesaj)
+        static public Ogrenci.SUBE SubeGuncelle(string mesaj, Ogrenci ogrenci)//şubeyi gir(a/b/c)
         {
-            do
+            SUBE:
+            Console.Write(mesaj);
+            string girdi = Console.ReadLine().ToUpper();
+
+            if (girdi == "")
             {
-                try
-                {
-                    Console.Write(mesaj);
-                    string dogum = Console.ReadLine();
-                    if (DateTime.TryParse(dogum, out DateTime dogumTarihi))
-                    {
-                        return dogumTarihi;
-                    }
-                    HataMesaj();
+                return ogrenci.Sube;
+            }
 
-                }
-                catch (Exception e)
-                {
+            switch (girdi)
+            {
 
-                    Console.WriteLine(e.Message);
-                }
+                case "A":
+                    return Ogrenci.SUBE.A;
+                case "B":
+                    return Ogrenci.SUBE.B;
+                case "C":
+                    return Ogrenci.SUBE.C;
 
-            } while (true);
+                default:
+                    HataMesaj("Böyle bir şube yok tekrar deneyiniz.");
+                    goto SUBE;
+            }
         }
         static public DateTime TarihGuncelle(string mesaj, Ogrenci ogrenci)
         {
@@ -243,7 +271,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                     {
                         return dogumTarihi;
                     }
-                    HataMesaj();
+                    HataMesaj("Yanlış tarih girdiniz.");
 
                 }
                 catch (Exception e)
@@ -254,37 +282,15 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
             } while (true);
         }
-        public static Ogrenci.CINSIYET CinsiyetAl(string mesaj)//cinsiyeti giriniz(e/k)
-        {
-            while (true)
-            {
-
-                string cins = YaziAl(mesaj).ToUpper();
-                switch (cins)
-                {
-                    case "K":
-                        return Ogrenci.CINSIYET.Erkek;
-                    case "E":
-                        return Ogrenci.CINSIYET.Kiz;
-                    default:
-                        HataMesaj();
-                        break;
-
-                }
-
-            }
-
-        }
         public static Ogrenci.CINSIYET CinsiyetGuncelle(string mesaj, Ogrenci ogrenci)//cinsiyeti giriniz(e/k)
         {
             while (true)
             {
-
-                string cins = YaziAl(mesaj).ToUpper();
+                Console.Write(mesaj);
+                string cins = Console.ReadLine().ToUpper();
 
                 if(cins == "")
                 {
-                    
                     return ogrenci.Cinsiyet;
                 }
                 switch (cins)
@@ -294,7 +300,7 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                     case "K":
                         return Ogrenci.CINSIYET.Kiz;
                     default:
-                        HataMesaj();
+                        HataMesaj("Böyle bir cinsiyet yok.");
                         break;
 
                 }
@@ -322,9 +328,9 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             return girdi.Substring(0, 1).ToUpper() + girdi.Substring(1).ToLower();
         }
 
-        static public void HataMesaj()
+        static public void HataMesaj(string mesaj)
         {
-            Console.WriteLine("Hatalı Giriş Yaptınız. Tekrar Giriş Yapınız.");
+            Console.WriteLine(mesaj);
         } // Her yere aynısını yazmak istemedim
         public static void MenuMesaji()
         {

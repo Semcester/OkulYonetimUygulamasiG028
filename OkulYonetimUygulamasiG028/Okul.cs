@@ -102,8 +102,9 @@ namespace OkulYonetimUygulamasiG028
         public void EnDusukUcSube() // SM 11 numaralı başlık-17.06.2022  ---------- String olarak alınan şube, şube al metotu ile değiştirldi.
         {
             List<Ogrenci> liste = this.Ogrenciler;
-
-            Console.WriteLine("3-Şubedeki en başarısız 3 öğrenciyi listele" + "".PadRight(15, '-'));
+            Console.WriteLine();
+            Console.WriteLine("11-Subedeki en düsük notlu 3 ögrenciyi listele" + "".PadRight(15, '-'));
+            Console.WriteLine();
         SUBE:
 
             Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
@@ -138,47 +139,55 @@ namespace OkulYonetimUygulamasiG028
 
             if (a == "1")
             {
+                Console.WriteLine();
+                Console.WriteLine("1-Bütün Öğrencileri Listele" + "".PadRight(15, '-'));
+
+                liste = liste.OrderBy(a => a.No).ToList();
 
                 OgrenciListele(liste);
             }
             else if (a == "2")
             {
+                Console.WriteLine();
                 Console.WriteLine("2-Şubeye Göre Öğrencileri Listele" + "".PadRight(15, '-'));
 
                 Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
 
+
+
                 if (sube == Ogrenci.SUBE.A)
                 {
-                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).ToList();
+                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.A).OrderBy(b=> b.No).ToList();
 
                 }
                 else if (sube == Ogrenci.SUBE.B)
                 {
-                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).ToList();
+                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.B).OrderBy(b => b.No).ToList();
 
                 }
                 else if (sube == Ogrenci.SUBE.C)
                 {
-                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).ToList();
+                    liste = this.Ogrenciler.Where(a => a.Sube == Ogrenci.SUBE.C).OrderBy(b => b.No).ToList();
 
                 }
                 OgrenciListele(liste);
             }
             else if (a == "3")
             {
+                Console.WriteLine();
                 Console.WriteLine("3-Cinsiyete Göre Öğrencileri Listele" + "".PadRight(15, '-'));
             CINSIYET:
                 Console.Write("Listelemek istediğiniz cinsiyeti girin (E/K): ");
                 string cinsiyet = Console.ReadLine().ToUpper();
                 if (cinsiyet == "E")
                 {
-                    liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Erkek).ToList();
+                    liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Erkek).OrderBy(b => b.No).ToList();
 
 
                 }
                 else if (cinsiyet == "K")
                 {
-                    liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Kiz).ToList();
+                    liste = Ogrenciler.Where(a => a.Cinsiyet == Ogrenci.CINSIYET.Kiz).OrderBy(b => b.No).ToList();
 
                 }
                 else
@@ -216,6 +225,9 @@ namespace OkulYonetimUygulamasiG028
 
             else if (a == "10") //Ortalama çözüldü -Merto
             {
+                Console.WriteLine();
+                Console.WriteLine("10-Şubedeki en yüksek notlu 5 öğrenciyi listele " + "".PadRight(15, '-'));
+                Console.WriteLine();
                 Ogrenci.SUBE sube = AracGerec.SubeAl("Listelemek istediğiniz şubeyi girin (A/B/C): ");
                 Console.WriteLine();
                 liste = Ogrenciler.Where(x => x.Sube == sube).OrderByDescending(x => x.Ortalama).Take(5).ToList();
@@ -235,6 +247,9 @@ namespace OkulYonetimUygulamasiG028
                 }
                 else
                 {
+                    Console.WriteLine();
+                    Console.WriteLine("Ögrencinin Adı Soyadı: " + og.Ad + " " + og.Soyad);
+                    Console.WriteLine("Ögrencinin Şubesi: " + og.Sube);
                     Console.WriteLine();
                     Console.WriteLine("Ögrencinin Okudugu Son Kitap ");
                     Console.WriteLine("".PadRight(30, '-'));
@@ -401,13 +416,10 @@ namespace OkulYonetimUygulamasiG028
         {
             Console.WriteLine();
             Console.WriteLine("17-Ögrenci sil " + "".PadRight(20, '-'));
-            Console.WriteLine();
 
             Ogrenci a = OgrenciNo();
+            OgrenciAdiSubesi(a.No);
 
-            Console.WriteLine("Ögrencinin Adı Soyadı: " + a.Ad + " " + a.Soyad);
-            Console.WriteLine("Ögrencinin Subesi: " + a.Sube);
-            Console.WriteLine();
         SECIM:
             string secim = AracGerec.YaziAl("Ögrenciyi silmek istediginize emin misiniz (E/H): ");
 
@@ -420,11 +432,12 @@ namespace OkulYonetimUygulamasiG028
                     break;
                 case "H":
                     Console.WriteLine("Öğrenci silinmedi.");
-                    return;
+                    break;
                 default:
                     Console.WriteLine("Hatalı giriş yaptınız");
                     goto SECIM;
             }
+            AracGerec.MenuMesaji();
         }
         public int NoKontrol(int sayi) //SM 16.06.2022
         {
@@ -523,7 +536,8 @@ namespace OkulYonetimUygulamasiG028
             Ogrenci ogr = OgrenciNo();
             OgrenciAdiSubesi(ogr.No);
 
-            string kitap = AracGerec.YaziAl("Eklenecek Kitabın Adı: ");
+            Console.Write("Eklenecek Kitabin Adı: ");
+            string kitap = AracGerec.BasHarfBuyut(Console.ReadLine());
 
             KitapGir(ogr.No, kitap);
             Console.WriteLine();
@@ -535,10 +549,13 @@ namespace OkulYonetimUygulamasiG028
         }
         public void YeniOgrenci() // SM 16.06.2022
         {
+            Console.WriteLine();
             Console.WriteLine("15-Öğrenci Ekle" + "".PadRight(15, '-'));
             int ogrenciNo = NoKontrol(AracGerec.SayiAl("Öğrencinin numarası: "));
+
             string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
             string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
+
             DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğum tarihi: ");
 
             Ogrenci.CINSIYET cins = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K): ");
