@@ -469,11 +469,30 @@ namespace OkulYonetimUygulamasiG028
             Ogrenci g = Ogrenciler.Where(x => x.No == ogrenciNo).FirstOrDefault();
             if (g != null)
             {
-                string ogrenciAdi = AracGerec.YaziAl("Öğrencinin adı: ");
-                string ogrenciSoyadi = AracGerec.YaziAl("Öğrencinin soyadı: ");
-                DateTime dogumTarihi = AracGerec.TarihAl("Öğrencinin doğun tarihi: ");
-                Ogrenci.CINSIYET eOrk = AracGerec.CinsiyetAl("Öğrencinin cinsiyeti (E/K): ");
-                Ogrenci.SUBE sube = AracGerec.SubeAl("Öğrencinin Şubesi (A/B/C): ");
+                string ogrenciAdi = AracGerec.AdGuncelle("Öğrencinin adı: ",g);
+                string ogrenciSoyadi = AracGerec.SoyAdGuncelle("Öğrencinin soyadı: ",g);
+                DateTime dogumTarihi = AracGerec.TarihGuncelle("Öğrencinin doğum tarihi: ", g);
+                Ogrenci.CINSIYET eOrk = AracGerec.CinsiyetGuncelle("Öğrencinin cinsiyeti (E/K): ", g);                
+                Ogrenci.SUBE sube = AracGerec.SubeGuncelle("Öğrencinin Şubesi (A/B/C): ",g);
+
+                if(ogrenciAdi == "")
+                {
+                    g.Ad = g.Ad;
+                }else if(ogrenciSoyadi == "")
+                {
+                    g.Soyad = g.Soyad;
+                }else if(dogumTarihi != DateTime.MinValue)
+                {
+                    g.DogumTarihi = g.DogumTarihi;
+                }else if(eOrk == 0)
+                {
+                    g.Cinsiyet = g.Cinsiyet;
+                }else if(sube == 0)
+                {
+                    g.Sube = g.Sube;
+                }
+
+
                 g.Ad = ogrenciAdi;
                 g.Soyad = ogrenciSoyadi;
                 g.DogumTarihi = dogumTarihi;

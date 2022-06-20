@@ -32,7 +32,6 @@ namespace OkulYonetimUygulamasiG028
             }
 
         }
-
         public Adres Adres = new Adres();
 
         public List<string> Kitaplar = new List<string>();

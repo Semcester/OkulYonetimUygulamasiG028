@@ -32,6 +32,32 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
             }
 
         }
+        static public Ogrenci.SUBE SubeGuncelle(string mesaj, Ogrenci ogrenci)//şubeyi gir(a/b/c)
+        {
+        SUBE:
+            string girdi = YaziAl(mesaj).ToUpper();
+            if( girdi == "")
+            {
+                return ogrenci.Sube;
+            }
+
+            switch (girdi)
+            {
+
+                case "A":
+                    return Ogrenci.SUBE.A;
+                case "B":
+                    return Ogrenci.SUBE.B;
+                case "C":
+                    return Ogrenci.SUBE.C;
+
+                default:
+                    Console.WriteLine("Böyle bir şube yok tekrar deneyiniz.");
+                    goto SUBE;
+
+            }
+
+        }
         static public bool SayiMi(string mesaj)//16 14 10 6 4 mert 
         {
             do
@@ -119,6 +145,64 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
 
             } while (true);
         }
+        static public string AdGuncelle(string mesaj, Ogrenci ogrenci)
+        {
+            do
+            {
+                try
+                {
+                    Console.Write(mesaj);
+                    string yazi = BasHarfBuyut(Console.ReadLine()); // "Kontrol" "Yazı" ile değiştirildi... Karışıklık olmaması için...
+
+                    if( yazi == "")
+                    {
+                        return ogrenci.Ad;
+                    }
+                    if (HarfMi(yazi))
+                    {
+
+                        return yazi;
+
+                    }
+                    HataMesaj();
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            } while (true);
+        }
+        static public string SoyAdGuncelle(string mesaj, Ogrenci ogrenci)
+        {
+            do
+            {
+                try
+                {
+                    Console.Write(mesaj);
+                    string yazi = BasHarfBuyut(Console.ReadLine()); // "Kontrol" "Yazı" ile değiştirildi... Karışıklık olmaması için...
+
+                    if (yazi == "")
+                    {
+                        return ogrenci.Soyad;
+                    }
+                    if (HarfMi(yazi))
+                    {
+
+                        return yazi;
+
+                    }
+                    HataMesaj();
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            } while (true);
+        }
         static public DateTime TarihAl(string mesaj)
         {
             do
@@ -127,6 +211,34 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                 {
                     Console.Write(mesaj);
                     string dogum = Console.ReadLine();
+                    if (DateTime.TryParse(dogum, out DateTime dogumTarihi))
+                    {
+                        return dogumTarihi;
+                    }
+                    HataMesaj();
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                }
+
+            } while (true);
+        }
+        static public DateTime TarihGuncelle(string mesaj, Ogrenci ogrenci)
+        {
+            do
+            {
+                try
+                {
+                    Console.Write(mesaj);
+                    string dogum = Console.ReadLine();
+
+                    if(dogum == "")
+                    {
+                        return ogrenci.DogumTarihi;
+                    }
                     if (DateTime.TryParse(dogum, out DateTime dogumTarihi))
                     {
                         return dogumTarihi;
@@ -153,6 +265,33 @@ namespace OkulYonetimSistemi_GoldenMade_son_ödev
                     case "K":
                         return Ogrenci.CINSIYET.Erkek;
                     case "E":
+                        return Ogrenci.CINSIYET.Kiz;
+                    default:
+                        HataMesaj();
+                        break;
+
+                }
+
+            }
+
+        }
+        public static Ogrenci.CINSIYET CinsiyetGuncelle(string mesaj, Ogrenci ogrenci)//cinsiyeti giriniz(e/k)
+        {
+            while (true)
+            {
+
+                string cins = YaziAl(mesaj).ToUpper();
+
+                if(cins == "")
+                {
+                    
+                    return ogrenci.Cinsiyet;
+                }
+                switch (cins)
+                {
+                    case "E":
+                        return Ogrenci.CINSIYET.Erkek;
+                    case "K":
                         return Ogrenci.CINSIYET.Kiz;
                     default:
                         HataMesaj();
